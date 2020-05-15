@@ -192,6 +192,25 @@ export default {
   components: {
     Card,
     CustomFontAwesomeIcon
+  },
+
+  head() {
+    return {
+      title: 'A propos | Fedabian',
+      meta: [
+        {
+          hid: 'description-page',
+          name: 'description',
+          content: 'Biographie de Maxime `Da-max` Ben Hassen'
+        },
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content:
+            'maxime benhassen, maxime benhassen portfolio, maxime benhassen développeur web, maxime benhassen étudiant, maxime benhassen biographie, da-max portfolio, da-max développeur, da-max, fedabian développeur, fedabian portfolio, fedabian biographie'
+        }
+      ]
+    }
   }
 }
 </script>

@@ -10,15 +10,6 @@
       <div
         class="skew-y-3 uk-margin-xlarge-top uk-light uk-tile uk-tile-default padding-xlarge-top padding-xlarge-bottom"
       >
-        <div
-          v-show="messages !== Array"
-          id="messages"
-          class="uk-width-1-2@s uk-margin-auto uk-margin-large-bottom"
-        >
-          <div class="uk-alert-" uk-alert>
-            <a class="uk-alert-close" uk-close></a>
-          </div>
-        </div>
         <contact-form />
       </div>
     </section>
@@ -63,9 +54,22 @@ export default {
     Alerts
   },
 
-  data() {
+  head() {
     return {
-      messages: Array
+      title: 'Me contacter | Fedabian',
+      meta: [
+        {
+          hid: 'description-page',
+          name: 'description',
+          content: 'Contacter Maxime `Da-max` Ben Hassen'
+        },
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content:
+            'maxime benhassen, maxime benhassen portfolio, maxime benhassen développeur web, maxime benhassen étudiant, maxime benhassen contact'
+        }
+      ]
     }
   }
 }
