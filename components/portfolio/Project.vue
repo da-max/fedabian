@@ -16,23 +16,41 @@
           ><font-awesome-icon :icon="['fas', 'eye']"/></span
         >Voir le projet</a
       >
+      <br class="uk-hidden@m" />
       <a
         :href="project.repository"
-        class="uk-margin-left uk-button uk-button-primary"
+        class="uk-hidden@m uk-margin-top uk-button uk-button-primary"
+        ><span class="uk-margin-right">
+          <font-awesome-icon :icon="['fas', 'code']"/></span
+        >Gitlab</a
+      >
+      <a
+        :href="project.repository"
+        class="uk-visible@m uk-margin-left uk-button uk-button-primary"
         ><span class="uk-margin-right">
           <font-awesome-icon :icon="['fas', 'code']"/></span
         >Gitlab</a
       >
       <div v-show="$store.state.auth.loggedIn" class="uk-margin-medium-top">
         <button
+          type="button"
           class="uk-button uk-button-danger"
           @click.prevent="deleteProject(project.id)"
         >
           Supprimer ce projet
         </button>
-        <button class="uk-button uk-button-primary">
+        <nuxt-link
+          to="/"
+          class="uk-visible@m uk-margin-left uk-button uk-button-primary"
+        >
           Modifier ce projet
-        </button>
+        </nuxt-link>
+        <nuxt-link
+          to="/"
+          class="uk-hidden@m uk-margin-top uk-button uk-button-primary"
+        >
+          Modifier ce projet
+        </nuxt-link>
       </div>
     </div>
   </article>
