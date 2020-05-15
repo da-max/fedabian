@@ -1,0 +1,8 @@
+$background-image: url('../images/main_bg.jpg');
+
+body {
+  background-image: $background-image;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
