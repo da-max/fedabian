@@ -74,10 +74,6 @@
           <li>
             <nuxt-link to="/me-contacter">Me contacter</nuxt-link>
           </li>
-          <li class="uk-nav-divider"></li>
-          <li v-if="!$store.state.auth.loggedIn">
-            <nuxt-link to="/compte/se-connecter">Se connecter</nuxt-link>
-          </li>
         </ul>
       </div>
     </div>
