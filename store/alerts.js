@@ -9,7 +9,7 @@ export const mutations = {
     state.alertId++
   },
   ADD_404(state) {
-    this.commit('ADD_ALERTS', {
+    this.commit('alerts/ADD_ALERTS', {
       id: state.alertId,
       header: true,
       headerContent: 'Ressource introuvable',
@@ -19,7 +19,7 @@ export const mutations = {
     })
   },
   ADD_400(state) {
-    this.commit('ADD_ALERTS', {
+    this.commit('alerts/ADD_ALERTS', {
       id: state.alertId,
       header: true,
       headerContent: 'Formulaire incomplet',
@@ -30,7 +30,7 @@ export const mutations = {
     })
   },
   ADD_500(state) {
-    this.commit('ADD_ALERTS', {
+    this.commit('alerts/ADD_ALERTS', {
       id: state.alertId,
       header: true,
       headerContent: 'Erreur interne',
@@ -41,12 +41,23 @@ export const mutations = {
     })
   },
   ADD_503(state) {
-    this.commit('ADD_ALERTS', {
+    this.commit('alerts/ADD_ALERTS', {
       id: state.alertId,
       header: true,
       headerContent: 'Service indisponible',
       body:
         'Le service demandé est momentanément indisponible, merci de réessayer ultérieurement.',
+      status: 'danger',
+      close: true
+    })
+  },
+  ADD_UNKNOWN(state) {
+    this.commit('alerts/ADD_ALERTS', {
+      id: state.alertId,
+      header: true,
+      headerContent: 'Erreur inconnue',
+      body:
+        'Une erreur est survenue, merci de réessayer et de me contacter si vous rencontrez de nouveau cette erreur.',
       status: 'danger',
       close: true
     })
