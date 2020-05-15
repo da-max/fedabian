@@ -1,4 +1,20 @@
-@import url("https://fonts.googleapis.com/css?family=Pacifico|Roboto:300,400,700&display=swap");
+@font-face {
+  font-family: "Roboto";
+  src: url("~static/fonts/Roboto/Roboto-Bold.ttf") format("TrueType");
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("~static/fonts/Roboto/Roboto-Regular.ttf") format("TrueType");
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Pacifico";
+  src: url("~static/fonts/Pacifico/Pacifico-Regular.ttf") format("TrueType");
+  font-weight: normal;
+}
 
 // 1. Your custom variables and variable overwrites.
 $global-font-family: Roboto, sans-serif;
