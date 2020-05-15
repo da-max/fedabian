@@ -6,7 +6,7 @@
           <h1 class="uk-text-bold">Biographie</h1>
           <br />
           <p class="uk-text-large">
-            Dès l‘âge de 14 ans j’apprends de nombreux langages de
+            Dès l’âge de 14 ans j’apprends de nombreux langages de
             programmations et à créer des sites web.
           </p>
         </div>
@@ -109,7 +109,7 @@
               <custom-font-awesome-icon :icon="['fab', 'html5']" size="2x" />
               <h3>HTML</h3>
               <p class="uk-light">
-                J’ai appris l'HTML (et le CSS) il y a 5 ans, d’abord sans but
+                J’ai appris l’HTML (et le CSS) il y a 5 ans, d’abord sans but
                 bien précis, ces langages, Ils m’ont permis de découvrir une
                 première facette, plutôt simple, de l’informatique.
               </p>
@@ -124,10 +124,10 @@
             <custom-font-awesome-icon :icon="['fab', 'js']" size="2x" />
             <h3>JavaScript</h3>
             <p class="uk-light">
-              Bien que cela puisse paraître paradoxale, je me sens beaucoup plus
+              Bien que cela puisse paraître paradoxal, je me sens beaucoup plus
               à l’aise en créant un site avec Vue.js qu’en codant en JavaScript
-              «pure». En effet, je trouve que Vue.js rend le code plus lisible
-              et plus cohérent que le JavaScript «pure».
+              « pur ». En effet, je trouve que Vue.js rend le code plus lisible
+              et plus cohérent que le JavaScript « pur ».
             </p>
             <p class="uk-light">
               Depuis début 2020, j’apprends à utiliser NodeJs avec le framework
@@ -145,7 +145,7 @@
               Tout comme JavaScript et Vue.js, je préfère créer un site avec
               Django qu’en Python «pure». Le framework Django m’a permis de
               revoir quelques subtilités de Python, cependant, je n’ai, à ce
-              jour, pas de projet en python « pure ».
+              jour, pas de projet en python « pur ».
             </p>
           </div>
         </div>
