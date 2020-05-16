@@ -74,6 +74,7 @@
 <script>
 export default {
   name: 'AddProjectForm',
+
   data() {
     return {
       project: {
@@ -85,6 +86,7 @@ export default {
       }
     }
   },
+
   methods: {
     async saveProject() {
       try {
