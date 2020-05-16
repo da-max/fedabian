@@ -127,7 +127,7 @@ module.exports = {
             }
           )
         } else {
-          return res.status(404).json({ error: 'user not exist in DB' })
+          return res.status(403).json({ error: 'user not exist in DB' })
         }
       },
       (userFound, resBycrypt, done) => {
