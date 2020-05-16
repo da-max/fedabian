@@ -40,13 +40,13 @@
           Supprimer ce projet
         </button>
         <nuxt-link
-          to="/"
+          :to="'/admin/portfolio/modifier-un-projet/' + project.id"
           class="uk-visible@m uk-margin-left uk-button uk-button-primary"
         >
           Modifier ce projet
         </nuxt-link>
         <nuxt-link
-          to="/"
+          :to="'/admin/portfolio/modifier-un-projet/' + project.id"
           class="uk-hidden@m uk-margin-top uk-button uk-button-primary"
         >
           Modifier ce projet
