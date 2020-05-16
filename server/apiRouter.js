@@ -14,10 +14,11 @@ exports.router = (() => {
   apiRouter.route('/users/current').put(usersControlers.updateUserProfile)
 
   // Projects routes
-  apiRouter.route('/projects').get(projectsControlers.getAll)
+  apiRouter.route('/projects').get(projectsControlers.list)
   apiRouter.route('/projects').post(projectsControlers.create)
   apiRouter.route('/project/:id').delete(projectsControlers.delete)
-
+  apiRouter.route('/projects/:id').get(projectsControlers.retrieve)
+  apiRouter.route('/projects/:id').put(projectsControlers.update)
   // Send mail routes
   apiRouter.route('/send-mail').post(contactControlers.sendMail)
 
