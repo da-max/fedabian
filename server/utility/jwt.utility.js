@@ -1,7 +1,6 @@
 const jwt = require('jsonwebtoken')
 
-const JWT_SIGN_SECRET =
-  'HyevryOneIamaNewBiginer1234SoIDontNowWhatICanWriteInThisSectionSoIWriteALittleWhatIWant12345'
+const JWT_SIGN_SECRET = process.env.JWT_SIGN_SECRET
 
 module.exports = {
   generateTokenForUser: (userData) => {
