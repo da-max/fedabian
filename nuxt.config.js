@@ -50,7 +50,8 @@ module.exports = {
     '@nuxtjs/axios',
     '@nuxtjs/auth',
     '@nuxtjs/pwa',
-    '@nuxtjs/proxy'
+    '@nuxtjs/proxy',
+    '@nuxtjs/markdownit'
   ],
   /*
    ** Axios module configuration
@@ -105,6 +106,18 @@ module.exports = {
       ],
       solid: ['faCode', 'faEye', 'faEnvelope']
     }
+  },
+  /*
+   ** Markdownit options
+   ** See https://github.com/markdown-it/markdown-it
+   */
+  markdownit: {
+    injected: true,
+    html: true,
+    // preset: 'default',
+    // linkify: true,
+    // breaks: true,
+    use: ['@abreto/markdown-it-katex']
   },
   /*
    ** Build configuration
