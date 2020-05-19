@@ -60,7 +60,12 @@ module.exports = {
    */
   axios: {
     prefix: '/api/',
-    proxy: true
+    proxy: true,
+    headers: {
+      get: {
+        'Access-Control-Allow-Origin': 'https://gitlab/com/**/*'
+      }
+    }
   },
   /*
    ** Auth module configuration
