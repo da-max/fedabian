@@ -56,7 +56,17 @@ export default {
           data: this.login
         })
       } catch (err) {
-        console.log(err)
+        if (err.response.status === 404) {
+          this.$store.commit('alerts/ADD_404')
+        } else if (err.response.status === 500) {
+          this.$store.commit('alerts/ADD_500')
+        } else if (err.response.status === 503) {
+          this.$store.commit('alerts/ADD_503')
+        } else if (err.response.status === 400) {
+          this.$store.commit('alerts/ADD_400')
+        } else if (err.response.status === 403) {
+          this.$store.commit('alerts/ADD_403')
+        }
       }
     }
   }

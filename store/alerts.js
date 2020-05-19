@@ -51,6 +51,17 @@ export const mutations = {
       close: true
     })
   },
+  ADD_403(state) {
+    this.commit('alerts/ADD_ALERTS', {
+      id: state.alertId,
+      header: true,
+      headerContent: 'Accès refusé',
+      body:
+        'L’accès n’est pas autorisé, cela signifie que vous n’avez pas les droits pour accéder à cette page.',
+      status: 'danger',
+      close: true
+    })
+  },
   ADD_UNKNOWN(state) {
     this.commit('alerts/ADD_ALERTS', {
       id: state.alertId,
