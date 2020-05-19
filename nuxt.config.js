@@ -25,7 +25,8 @@ module.exports = {
    */
   css: [
     '@/assets/scss/main.scss',
-    '@fortawesome/fontawesome-svg-core/styles.css'
+    '@fortawesome/fontawesome-svg-core/styles.css',
+    'katex/dist/katex.min.css'
   ],
   /*
    ** Plugins to load before mounting the App
