@@ -60,12 +60,7 @@ module.exports = {
    */
   axios: {
     prefix: '/api/',
-    proxy: true,
-    headers: {
-      get: {
-        'Access-Control-Allow-Origin': 'https://gitlab/com/**/*'
-      }
-    }
+    proxy: true
   },
   /*
    ** Auth module configuration
@@ -120,10 +115,11 @@ module.exports = {
   markdownit: {
     injected: true,
     html: true,
+    typography: true,
     // preset: 'default',
     // linkify: true,
     // breaks: true,
-    use: ['@abreto/markdown-it-katex']
+    use: ['@abreto/markdown-it-katex', '@hackmd/markdown-it-imsize']
   },
   /*
    ** Build configuration
@@ -132,6 +128,8 @@ module.exports = {
     /*
      ** You can extend webpack config here
      */
-    extend(config, ctx) {}
+    extend(config, ctx) {
+      config.node = { fs: 'empty' }
+    }
   }
 }
