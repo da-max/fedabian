@@ -18,7 +18,12 @@ export default {
     ckeditor: CKEditor.component
   },
   props: {
-    value: [String],
+    value: {
+      default() {
+        return [String]
+      },
+      type: Array
+    },
     options: {
       type: [Object],
       default: () => {}

@@ -42,6 +42,13 @@ export default {
     Alert
   },
 
-  props: ['error']
+  props: {
+    error: {
+      type: Object,
+      default() {
+        return Object()
+      }
+    }
+  }
 }
 </script>

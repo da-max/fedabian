@@ -1,5 +1,5 @@
 <template>
-  <form method="post" @submit.prevent="saveProject" class="uk-form-inline">
+  <form method="post" class="uk-form-inline" @submit.prevent="saveProject">
     <div
       uk-grid
       class="uk-child-width-1-2@m uk-grid-large uk-light uk-margin-large-bottom"

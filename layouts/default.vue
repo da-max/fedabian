@@ -14,7 +14,6 @@ export default {
   components: {
     Navbar,
     Footer
-  },
-  props: ['error']
+  }
 }
 </script>
