@@ -5,10 +5,10 @@
         class="uk-text-bold uk-position-center uk-text-center uk-text-large text-orange-900"
         uk-scrollspy="target: > h1, p, a; cls: uk-animation-scale-down; delay: 100"
       >
-        <h1 class="text-orange-900">Fedabian</h1>
+        <h1 class="text-orange-900">Site 1</h1>
         <p>
-          Lycéen, passionné d’informatique et de mathématiques, bienvenue sur
-          Fedabian.fr.
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Commodi
+          nostrum facilis, repudiandae blanditiis similique ut.
         </p>
         <nuxt-link to="a-propos" class="uk-button uk-button-primary"
           >En savoir plus ...</nuxt-link
@@ -20,16 +20,15 @@
       class="uk-padding-large uk-tile uk-tile-default skew-y-3 uk-light uk-text-center"
     >
       <div uk-scrollspy="target: > div, h2; cls: uk-animation-fade; delay: 100">
-        <h2>Mes technologies</h2>
+        <h2>Lorem, ipsum.</h2>
         <div class="uk-margin-xlarge-bottom uk-margin-medium-top">
-          <a href="https://openclassrooms.com/" class="uk-link-reset"
-            >Openclassrooms</a
-          >,
+          <a href="https://openclassrooms.com/" class="uk-link-reset">Lorem</a>,
           <a href="https://developer.mozilla.org/fr/" class="uk-link-reset"
-            >la MDN</a
-          >, <a href="https://youtube.com" class="uk-link-reset">Youtube</a> et
-          les documentations sont les seules ressources/cours qui m’ont permis
-          d‘apprendre la programmation.
+            >Lorem, ipsum.</a
+          >, <a href="https://youtube.com" class="uk-link-reset">Lorem</a> et
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita
+          necessitatibus facere sunt dolorum hic dolor fugit asperiores aliquam
+          accusantium praesentium!
         </div>
       </div>
 
@@ -41,43 +40,47 @@
         <div>
           <custom-font-awesome-icon :icon="['far', 'file-code']" size="2x" />
 
-          <h3>HTML/CSS</h3>
+          <h3>Lorem</h3>
           <p>
-            J’ai appris l’HTML et le CSS il y a 5 ans, d‘abord sans but bien
-            précis, ces langages, Ils m’ont permis de découvrir une première
-            facette, plutôt simple, de l‘informatique.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum nemo
+            in facilis veritatis animi totam pariatur ducimus minus maxime
+            quidem velit atque officiis tempore facere iusto quaerat consequatur
+            dolor alias, est dolorum molestias optio, laborum perspiciatis!
+            Corporis voluptas provident similique iusto dolor labore animi quam,
+            consequatur veniam necessitatibus laborum sit.
           </p>
         </div>
         <div>
           <custom-font-awesome-icon :icon="['fab', 'linux']" size="2x" />
 
-          <h3>JavaScript</h3>
+          <h3>Lorem</h3>
           <p>
-            J’ai ensuite appris le JavaScript, jusqu’en 2019, je n‘ai que très
-            peu utilisé ce langage. Aujourd’hui, j‘utilise ce langage dans de
-            nombreux projets avec le framework Vue.js.
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore
+            doloremque, excepturi adipisci ut numquam molestias. Quos tempora
+            totam doloremque, provident excepturi molestiae recusandae omnis
+            ratione, illo, laudantium qui voluptatem sint!
           </p>
         </div>
         <div>
           <custom-font-awesome-icon :icon="['fab', 'python']" size="2x" />
 
-          <h3>Python</h3>
+          <h3>Lorem</h3>
           <p>
-            Je découvre et apprend le python en 2016 sans vraiment m’en servir
-            dans de véritables projets. Ce n’est que deux ans plus tard que je
-            décide de créer un site web grâce au framework django, aujourd’hui,
-            tout mes projets utilisent Django.
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Porro
+            quisquam dignissimos voluptate earum aliquam accusantium nulla, ea
+            molestias deleniti natus enim cupiditate ut ipsa alias, eligendi
+            eius id expedita in?
           </p>
         </div>
         <div class="uk-margin-xlarge-bottom">
           <custom-font-awesome-icon :icon="['fab', 'linux']" size="2x" />
 
-          <h3>Linux</h3>
+          <h3>Lorem</h3>
           <p>
-            J’utilise Linux (d'abord Ubuntu puis Fedora) depuis 10 ans. Au
-            départ simple utilisateur, j’apprend et prend pars à différent
-            projets autour du logiciel libre en 2018. Je connais donc plutôt
-            bien les environnements UNIX et le BASH.
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Optio, nam
+            voluptatem obcaecati pariatur atque aut voluptate repellendus
+            laboriosam? Quidem, asperiores labore! Asperiores, voluptas officia
+            vel excepturi mollitia dignissimos accusantium alias.
           </p>
         </div>
       </div>
@@ -93,7 +96,7 @@
             <li>
               <font-awesome-icon :icon="['far', 'user']" class="fa-4x" />
             </li>
-            <li class="uk-text-large">Clients</li>
+            <li class="uk-text-large">Lorem</li>
             <li>3</li>
           </ul>
         </div>
@@ -102,7 +105,7 @@
             <li>
               <font-awesome-icon :icon="['far', 'folder-open']" class="fa-4x" />
             </li>
-            <li class="uk-text-large">Projets</li>
+            <li class="uk-text-large">Lorem</li>
             <li>4</li>
           </ul>
         </div>
@@ -111,7 +114,7 @@
         <nuxt-link
           class="uk-button uk-button-primary uk-text-bold"
           to="/mes-projets"
-          >Découvrir mes projets ...</nuxt-link
+          >Lien ...</nuxt-link
         >
       </div>
     </section>

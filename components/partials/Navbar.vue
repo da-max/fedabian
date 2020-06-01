@@ -5,21 +5,17 @@
         <div class="uk-navbar-center-left">
           <ul class="uk-navbar-nav">
             <li class="uk-parent">
-              <nuxt-link to="/a-propos">Présentation</nuxt-link>
-            </li>
-            <!-- This link has curent-page for so that it is taken into account in the css file (generate by purgecss) -->
-            <li class="uk-parent">
-              <nuxt-link to="/mes-projets">Mes projets</nuxt-link>
+              <nuxt-link to="/a-propos">Page 1</nuxt-link>
             </li>
           </ul>
         </div>
         <nuxt-link id="navbar-logo" to="/" class="uk-navbar-item uk-logo"
-          >Da-max</nuxt-link
+          >Site 1</nuxt-link
         >
         <div class="uk-navbar-center-right">
           <ul class="uk-navbar-nav">
             <li class="uk-parent">
-              <nuxt-link to="/me-contacter">Me contacter</nuxt-link>
+              <nuxt-link to="/me-contacter">Contact</nuxt-link>
             </li>
             <li v-if="$store.state.auth.loggedIn">
               <a href="#" class="uk-navbar-toggle">Espace administration</a>
@@ -49,7 +45,7 @@
           id="navbar-logo"
           to="/"
           class="uk-navbar-item uk-logo uk-margin-left"
-          >Da-max</nuxt-link
+          >Site 1</nuxt-link
         >
       </div>
       <div class="uk-navbar-right uk-margin-right">
@@ -66,13 +62,10 @@
       <div class="uk-offcanvas-bar uk-flex uk-flex-column">
         <ul class="uk-nav uk-nav-center uk-margin-auto-vertical">
           <li>
-            <nuxt-link to="/a-propos">Présentation</nuxt-link>
+            <nuxt-link to="/a-propos">Page 1</nuxt-link>
           </li>
           <li>
-            <nuxt-link to="/mes-projets">Mes projets</nuxt-link>
-          </li>
-          <li>
-            <nuxt-link to="/me-contacter">Me contacter</nuxt-link>
+            <nuxt-link to="/me-contacter">Contact</nuxt-link>
           </li>
         </ul>
       </div>

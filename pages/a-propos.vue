@@ -3,11 +3,11 @@
     <section class="uk-text-center uk-margin-large-top">
       <div uk-scrollspy="target: > div > *; cls: uk-animation-fade; delay: 100">
         <div class="uk-margin-xlarge-bottom">
-          <h1 class="uk-text-bold">Biographie</h1>
+          <h1 class="uk-text-bold">Lorem</h1>
           <br />
           <p class="uk-text-large">
-            Dès l’âge de 14 ans j’apprends de nombreux langages de
-            programmations et à créer des sites web.
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Excepturi,
+            laudantium?
           </p>
         </div>
         <div
@@ -24,34 +24,31 @@
             </div>
             <div>
               <h4 class="uk-text-large">
-                Lycéen, j’apprends la programmation de manière autodidacte.
+                Lorem ipsum, dolor sit amet consectetur adipisicing.
               </h4>
               <ul class="uk-list">
                 <li class="uk-text-justify">
-                  Depuis 2016, j’ai appris de nombreux langages tel que l’HTML,
-                  le CSS, le PHP, le Python, le JavaScript. Différents projets
-                  m’ont permis de m’exercer et d’apprendre ces langages en
-                  profondeur. Très rapidement, j’ai été amené à préférer
-                  certains langages à d’autres et donc à utiliser des
-                  technologies me permettant d’accélérer les tâches que je
-                  appréciais le moins. Ainsi, aujourd’hui, j’utilise des
-                  frameworks CSS afin de faciliter le design et l’organisation
-                  visuel des sites que je conçois (je n’ai aucune connaissance
-                  en design).
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit
+                  incidunt impedit vero cum facere. Quo saepe culpa labore
+                  minima animi unde neque mollitia odit cum molestiae, placeat,
+                  quisquam nulla, ab facilis nisi veniam architecto dolorem sed
+                  debitis suscipit perspiciatis laudantium praesentium
+                  doloremque ipsa. Ea in nemo veritatis velit animi ut.
                 </li>
                 <li class="uk-text-justify">
-                  Au fur et à mesure de mon apprentissage, j’ai été amené à
-                  faire des choix quant aux technologies que je devais utiliser.
-                  PHP ou Python ? React ou Vue ? J’ai dû faire des choix. Le
-                  Python étant un langage de plus en plus populaire (aussi bien
-                  dans le domaine du Web que celui du Machine Learning ou de
-                  l’enseignement) j’ai décidé de me concentrer sur
-                  l’apprentissage de ce langage. Je n’ai pas appris le React
-                  pour plusieurs raisons, la première est sa complexité (qui est
-                  bien supérieure à Vue), mais également son concepteur original
-                  (Facebook), en effet, ne partageant pas le modèle économique
-                  de cette société, j’ai décidé de développer des sites avec
-                  VueJs (quand son utilisation était nécessaire).
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Nobis, enim minima perferendis ullam temporibus officia sunt
+                  tempore veniam vitae ducimus laudantium illum deleniti quis
+                  quo magnam quos earum odio! Assumenda dolorem perferendis quo
+                  aliquid iusto corrupti, laborum ipsa aperiam recusandae
+                  obcaecati animi voluptatibus. Quos, similique debitis, qui
+                  suscipit dolore earum, mollitia in illum quae provident nemo
+                  laborum. Impedit commodi tempore culpa odio harum aliquam
+                  temporibus, accusamus dignissimos fugit non. Iure culpa natus
+                  et dolores consectetur sed esse nihil quo! Laudantium
+                  excepturi consequatur aut nemo earum a consectetur voluptatem
+                  eligendi cum, accusantium similique temporibus modi dolorem
+                  deserunt magni illum neque! Consequuntur?
                 </li>
                 <!--<li><button href="" class="uk-button uk-button-primary uk-text-bold">Télécharger mon cv</button></li>-->
               </ul>
@@ -67,23 +64,24 @@
               <li>
                 <font-awesome-icon :icon="['far', 'folder-open']" size="4x" />
               </li>
-              <li>Projets | 4</li>
+              <li>Lorem | 4</li>
               <li class="uk-margin-top">
-                J’essaye de m’investir dans des projets autant variés que
-                possible : création de sites internet, rédaction de
-                documentations (fedora-fr) ou participation à des événements
-                autour de logiciel libre (JDLL, Ubuntu-party).
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quos,
+                temporibus quibusdam, amet eveniet officiis omnis qui voluptates
+                dolorum facilis, fugiat pariatur obcaecati autem vitae. Earum
+                ipsam odio excepturi ipsum impedit?
               </li>
             </ul>
           </div>
           <div>
             <ul class="uk-list">
               <li><font-awesome-icon :icon="['far', 'user']" size="4x" /></li>
-              <li>Clients | 3</li>
+              <li>Lorem | 3</li>
               <li class="uk-margin-top">
-                La plupart des personnes avec qui je travaille sont, avant
-                d’être des clients, des amies ou des associations que
-                j’affectionne et côtoie.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic
+                pariatur, vel eius ullam asperiores quaerat reprehenderit
+                laboriosam nostrum quae optio totam repellendus fuga ipsum!
+                Quasi optio eveniet similique eos iure.
               </li>
             </ul>
           </div>
@@ -96,7 +94,7 @@
       uk-scrollspy="target: > h1, div; cls: uk-animation-fade; delay: 100"
     >
       <h1 class="uk-text-bold uk-margin-xlarge-bottom uk-margin-xlarge-top">
-        Mes technologies
+        Lorem
       </h1>
 
       <div
@@ -107,11 +105,11 @@
           <card>
             <template #body>
               <custom-font-awesome-icon :icon="['fab', 'html5']" size="2x" />
-              <h3>HTML</h3>
+              <h3>Lorem</h3>
               <p class="uk-light">
-                J’ai appris l’HTML (et le CSS) il y a 5 ans, d’abord sans but
-                bien précis, ces langages, Ils m’ont permis de découvrir une
-                première facette, plutôt simple, de l’informatique.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum
+                pariatur ea nobis recusandae iure saepe, atque officiis adipisci
+                eos minus?
               </p>
             </template>
           </card>
@@ -122,16 +120,17 @@
             class="uk-card uk-card-default uk-card-body uk-padding-medium uk-border-rounded"
           >
             <custom-font-awesome-icon :icon="['fab', 'js']" size="2x" />
-            <h3>JavaScript</h3>
+            <h3>Lorem</h3>
             <p class="uk-light">
-              Bien que cela puisse paraître paradoxal, je me sens beaucoup plus
-              à l’aise en créant un site avec Vue.js qu’en codant en JavaScript
-              « pur ». En effet, je trouve que Vue.js rend le code plus lisible
-              et plus cohérent que le JavaScript « pur ».
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus
+              dicta itaque odit animi laboriosam debitis temporibus iure numquam
+              omnis! Dolor non quidem provident impedit rerum necessitatibus
+              cumque, enim doloremque suscipit.
             </p>
             <p class="uk-light">
-              Depuis début 2020, j’apprends à utiliser NodeJs avec le framework
-              ExpressJs, ce site est d’ailleurs codé avec ExpressJs et NuxtJs.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam
+              culpa quis esse maiores dicta quaerat recusandae minus natus, sed
+              amet!
             </p>
           </div>
         </div>
@@ -140,12 +139,12 @@
             class="uk-card uk-card-default uk-card-body uk-padding-medium uk-border-rounded"
           >
             <custom-font-awesome-icon :icon="['fab', 'python']" size="2x" />
-            <h3>Python</h3>
+            <h3>Lorem</h3>
             <p class="uk-light">
-              Tout comme JavaScript et Vue.js, je préfère créer un site avec
-              Django qu’en Python «pure». Le framework Django m’a permis de
-              revoir quelques subtilités de Python, cependant, je n’ai, à ce
-              jour, pas de projet en python « pur ».
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Asperiores perspiciatis dolorum quis ipsum blanditiis architecto
+              iusto ullam delectus laboriosam! Eos, eius molestias harum odio
+              accusamus iste natus assumenda provident. Tempora!
             </p>
           </div>
         </div>
@@ -154,12 +153,13 @@
             class="uk-card uk-card-default uk-card-body uk-padding-medium uk-border-rounded"
           >
             <custom-font-awesome-icon :icon="['fab', 'css3-alt']" size="2x" />
-            <h3>CSS</h3>
+            <h3>Lorem</h3>
             <p class="uk-light">
-              N'étant pas un spécialiste du CSS, j’ai rapidement envisagé
-              l’utilisation de framework CSS. Bootstrap, UIkit sont des
-              frameworks que je maîtrise bien. Ce site est construit grâce à
-              <a href="https://getuikit.com">UIkit</a>.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto
+              laborum praesentium modi distinctio veniam tempora mollitia optio
+              animi inventore dignissimos neque, hic commodi magnam fuga, id
+              accusamus libero numquam sit.
+              <a href="https://getuikit.com">Lien</a>.
             </p>
           </div>
         </div>
@@ -168,14 +168,13 @@
             class="uk-margin-auto uk-card uk-card-default uk-card-body uk-padding-medium uk-border-rounded"
           >
             <custom-font-awesome-icon :icon="['fab', 'linux']" size="2x" />
-            <h3>Linux</h3>
+            <h3>Lorem</h3>
             <p class="uk-light">
-              Linux a toujours eu une place très importante dans mon
-              apprentissage de l’informatique, en effet, j’utilise Linux
-              (d’abord Ubuntu puis Fedora) depuis 10 ans. Au départ simple
-              utilisateur, j’apprends et prend pars à différents projets autour
-              du logiciel libre en 2018. Je connais donc plutôt bien les
-              environnements UNIX et le BASH.
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+              Explicabo nihil commodi quia iste omnis libero maiores animi
+              veritatis. Rerum aliquam recusandae sunt libero commodi! Ut enim
+              quas hic, nobis illum alias voluptatibus est veniam architecto
+              odit voluptatum eum. Harum, excepturi!
             </p>
           </div>
         </div>
