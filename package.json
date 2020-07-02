@@ -37,8 +37,7 @@
     "nodemailer": "^6.4.6",
     "nuxt": "^2.0.0",
     "nuxt-fontawesome": "^0.4.0",
-    "sequelize": "^5.21.7",
-    "vuelayers": "^0.11.26"
+    "sequelize": "^5.21.7"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^2.0.0",
