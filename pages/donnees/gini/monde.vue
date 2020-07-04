@@ -11,10 +11,8 @@
           <gini-nav></gini-nav>
         </div>
         <div class="uk-width-expand">
-          <client-only>
-            <h2 class="uk-text-center">L’indice de Gini dans le monde</h2>
-            <gini-map></gini-map>
-          </client-only>
+          <h2 class="uk-text-center">L’indice de Gini dans le monde</h2>
+          <gini-map></gini-map>
         </div>
       </div>
     </section>

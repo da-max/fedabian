@@ -1,14 +1,16 @@
 <template>
   <div>
     <div id="map-wrap" style="height: 500px">
-      <l-map :zoom="3" :center="[0, 0]">
-        <l-tile-layer :url="url" :attribution="attribution" />
-        <l-geo-json
-          :options="options"
-          :geojson="geojson"
-          :options-style="styleFunction"
-        ></l-geo-json>
-      </l-map>
+      <client-only>
+        <l-map :zoom="3" :center="[0, 0]">
+          <l-tile-layer :url="url" :attribution="attribution" />
+          <l-geo-json
+            :options="options"
+            :geojson="geojson"
+            :options-style="styleFunction"
+          ></l-geo-json>
+        </l-map>
+      </client-only>
     </div>
   </div>
 </template>
@@ -109,10 +111,13 @@ export default {
 
     onEachFeatureFunction() {
       return (feature, layer) =>
-        layer.bindTooltip(`<div>Pays : ${feature.properties.name}</div>`, {
-          permanent: false,
-          sticky: true
-        })
+        layer.bindTooltip(
+          `<div>Pays : ${feature.properties.name}</div><div>Gini ${feature.properties.gini}</div>`,
+          {
+            permanent: false,
+            sticky: true
+          }
+        )
     }
   },
 
