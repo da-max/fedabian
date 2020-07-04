@@ -1,7 +1,7 @@
 <template>
   <div>
     <navbar />
-    <nuxt />
+    <nuxt uk-height-viewport="offset-top: true; offset-bottom: true" />
     <Footer />
   </div>
 </template>
