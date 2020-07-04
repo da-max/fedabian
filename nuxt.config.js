@@ -50,7 +50,8 @@ module.exports = {
     '@nuxtjs/axios',
     '@nuxtjs/auth',
     '@nuxtjs/pwa',
-    '@nuxtjs/proxy'
+    '@nuxtjs/proxy',
+    'nuxt-leaflet'
   ],
   /*
    ** Axios module configuration
