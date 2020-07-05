@@ -12,6 +12,7 @@
         </div>
         <div class="uk-width-expand">
           <h2 class="uk-text-center">L’indice de Gini dans le monde</h2>
+          <hr />
           <gini-map></gini-map>
         </div>
       </div>

@@ -1,7 +1,42 @@
 <template>
   <div>
-    <div id="map-wrap" style="height: 500px">
-      <client-only>
+    <form
+      class="uk-form-horizontal	uk-margin-large-bottom uk-child-width-1-2@m"
+      uk-grid
+    >
+      <div>
+        <label for="enableOptions" class="uk-form-label"
+          >Afficher les couleurs</label
+        >
+        <div class="uk-form-controls">
+          <input
+            id="enable-tooltip"
+            v-model="enableOptions"
+            type="checkbox"
+            name="enableOptions"
+            class="uk-checkbox"
+          />
+        </div>
+      </div>
+      <br />
+      <div>
+        <label for="enableTooltip" class="uk-form-label"
+          >Afficher les infos-bulles</label
+        >
+        <div class="uk-form-controls">
+          <input
+            id="enable-tooltip"
+            v-model="enableTooltip"
+            type="checkbox"
+            name="enableTooltip"
+            class="uk-checkbox"
+          />
+        </div>
+      </div>
+    </form>
+
+    <client-only>
+      <div id="map-wrap" style="height: 500px">
         <l-map :zoom="3" :center="[0, 0]">
           <l-tile-layer :url="url" :attribution="attribution" />
           <l-geo-json
@@ -10,8 +45,8 @@
             :options-style="styleFunction"
           ></l-geo-json>
         </l-map>
-      </client-only>
-    </div>
+      </div>
+    </client-only>
   </div>
 </template>
 
@@ -20,6 +55,7 @@ import WorldJson from '~/assets/custom.geo.json'
 
 export default {
   name: 'GiniMap',
+
   async fetch() {
     const { data } = await this.$axios.get(
       'https://restcountries.eu/rest/v2/all'
@@ -27,15 +63,19 @@ export default {
 
     this.countries = data
   },
+
   data() {
     return {
       countries: [],
       coordinates: [],
       url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       attribution:
-        '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+      enableOptions: false,
+      enableTooltip: true
     }
   },
+
   computed: {
     countriesGini() {
       const countriesGini = {}
@@ -59,7 +99,10 @@ export default {
 
     geojson() {
       WorldJson.features.forEach(async (country) => {
-        country.properties.gini = this.countriesGini[country.properties.iso_a3]
+        country.properties.gini = await this.countriesGini[
+          country.properties.iso_a3
+        ]
+
         country.properties.color = await this.giniColor(country.properties.gini)
       })
       return WorldJson
@@ -97,6 +140,9 @@ export default {
     },
 
     styleFunction() {
+      if (!this.enableOptions) {
+        return () => {}
+      }
       return (feature) => ({
         color: feature.properties.color,
         fillOpacity: 0.8
@@ -110,14 +156,25 @@ export default {
     },
 
     onEachFeatureFunction() {
-      return (feature, layer) =>
-        layer.bindTooltip(
-          `<div>Pays : ${feature.properties.name}</div><div>Gini ${feature.properties.gini}</div>`,
+      if ((!this.enableOptions && !this.enableTooltip) || !this.enableTooltip) {
+        return () => {}
+      }
+      return (feature, layer) => {
+        let gini
+        if (feature.properties.gini === null) {
+          gini = 'Inconnue'
+        } else {
+          gini = Math.round(feature.properties.gini * 100) / 10000
+        }
+
+        return layer.bindTooltip(
+          `<div>Pays : ${feature.properties.name}</div><div>Indice de gini : ${gini}</div>`,
           {
             permanent: false,
             sticky: true
           }
         )
+      }
     }
   },
 
