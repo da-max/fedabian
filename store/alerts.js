@@ -5,7 +5,10 @@ export const state = () => ({
 
 export const mutations = {
   ADD_ALERTS(state, alert) {
-    state.alerts.push(alert)
+    state.alerts.push({
+      id: state.alertId,
+      alert
+    })
     state.alertId++
   },
   ADD_404(state) {
