@@ -7,7 +7,7 @@
       class="uk-container uk-background-default uk-padding uk-margin-large-bottom"
     >
       <div uk-grid>
-        <div class="uk-width-1-3@m">
+        <div class="uk-width-1-4@m">
           <gini-nav></gini-nav>
         </div>
         <div class="uk-width-expand">
