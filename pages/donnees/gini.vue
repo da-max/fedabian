@@ -8,25 +8,26 @@
     >
       <div uk-grid>
         <div class="uk-width-1-4@m">
-          <div uk-sticky="offset: 20px; media: @m">
-            <gini-nav class="uk-margin-large-bottom"></gini-nav>
+          <gini-nav class="uk-margin-large-bottom"></gini-nav>
+          <div class="uk-margin-large-bottom uk-text-center">
+            <gini-search-bar></gini-search-bar>
+          </div>
+          <div>
             <div>
-              <div>
-                <span class="uk-label">Moyenne</span>
-                {{ Math.round(average * 100) / 10000 }}
-              </div>
-              <div>
-                <span class="uk-label">Médiane</span>
-                {{ Math.round(mediane * 100) / 10000 }}
-              </div>
-              <div>
-                <span class="uk-label">Minimum</span>
-                {{ Math.round(min * 100) / 10000 }} ({{ minCountry }})
-              </div>
-              <div>
-                <span class="uk-label">Maximum</span>
-                {{ Math.round(max * 100) / 10000 }} ({{ maxCountry }})
-              </div>
+              <span class="uk-label">Moyenne</span>
+              {{ Math.round(average * 100) / 10000 }}
+            </div>
+            <div>
+              <span class="uk-label">Médiane</span>
+              {{ Math.round(mediane * 100) / 10000 }}
+            </div>
+            <div>
+              <span class="uk-label">Minimum</span>
+              {{ Math.round(min * 100) / 10000 }} ({{ minCountry }})
+            </div>
+            <div>
+              <span class="uk-label">Maximum</span>
+              {{ Math.round(max * 100) / 10000 }} ({{ maxCountry }})
             </div>
           </div>
         </div>
@@ -41,10 +42,11 @@
 <script>
 import { mapGetters } from 'vuex'
 import GiniNav from '~/components/gini/Nav'
+import GiniSearchBar from '~/components/gini/SearchBar'
 
 export default {
   name: 'Gini',
-  components: { GiniNav },
+  components: { GiniNav, GiniSearchBar },
 
   async fetch() {
     await this.$store.dispatch('gini/getAll')
