@@ -5,7 +5,7 @@
     </h1>
 
     <section
-      class="uk-container uk-background-default uk-padding uk-margin-large-bottom"
+      class="uk-container uk-background-default uk-padding uk-margin-large-bottom uk-light"
     >
       <gini-nav></gini-nav>
     </section>
