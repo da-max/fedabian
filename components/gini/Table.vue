@@ -17,7 +17,7 @@
           {{ country.translations.fr }}
         </td>
         <td>{{ country.population }}</td>
-        <td v-if="country.area !== null">{{ country.area }} km</td>
+        <td v-if="country.area !== null">{{ country.area }} km²</td>
         <td v-else>Inconnu</td>
         <td v-if="country.gini !== null">
           {{ Math.round(country.gini * 100) / 10000 }}
