@@ -57,3 +57,16 @@ export const getters = {
     return getters.sorted[0]
   }
 }
+
+export const actions = {
+  async getAll({ commit }) {
+    try {
+      const countries = await this.$axios.$get(
+        'https://restcountries.eu/rest/v2/all'
+      )
+      commit('SET_COUNTRIES', countries)
+    } catch (error) {
+      commit('modules/alert/ADD_ALERT', error.body, { root: true })
+    }
+  }
+}
