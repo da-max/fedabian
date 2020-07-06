@@ -1,40 +1,60 @@
 <template>
   <div>
-    <form
-      class="uk-form-horizontal	uk-margin-large-bottom uk-child-width-1-2@m"
-      uk-grid
-    >
-      <div>
-        <label for="enableOptions" class="uk-form-label"
-          >Afficher les couleurs</label
-        >
-        <div class="uk-form-controls">
-          <input
-            id="enable-tooltip"
-            v-model="enableOptions"
-            type="checkbox"
-            name="enableOptions"
-            class="uk-checkbox"
-          />
+    <form class="uk-form-horizontal uk-margin-medium-bottom">
+      <fieldset class="uk-fieldset">
+        <legend class="uk-legend">Options</legend>
+        <div uk-grid class="uk-child-width-1-2@m ">
+          <div>
+            <label for="enableOptions" class="uk-form-label"
+              >Afficher les couleurs</label
+            >
+            <div class="uk-form-controls">
+              <input
+                id="enable-tooltip"
+                v-model="enableOptions"
+                type="checkbox"
+                name="enableOptions"
+                class="uk-checkbox"
+              />
+            </div>
+          </div>
+          <div>
+            <label for="enableTooltip" class="uk-form-label"
+              >Afficher les infos-bulles</label
+            >
+            <div class="uk-form-controls">
+              <input
+                id="enable-tooltip"
+                v-model="enableTooltip"
+                type="checkbox"
+                name="enableTooltip"
+                class="uk-checkbox"
+              />
+            </div>
+          </div>
         </div>
-      </div>
-      <br />
-      <div>
-        <label for="enableTooltip" class="uk-form-label"
-          >Afficher les infos-bulles</label
-        >
-        <div class="uk-form-controls">
-          <input
-            id="enable-tooltip"
-            v-model="enableTooltip"
-            type="checkbox"
-            name="enableTooltip"
-            class="uk-checkbox"
-          />
-        </div>
-      </div>
+      </fieldset>
     </form>
-
+    <div v-show="enableOptions" class="uk-margin-large-bottom">
+      Indice de Gini comprit entre :
+      <ul class="uk-list uk-child-width-1-3@m uk-flex-center" uk-grid>
+        <li v-for="b in bearingFormat" :key="b[0]">
+          {{ Math.round(b[0] * 100) / 10000 }} et
+          {{ Math.round(b[1] * 100) / 10000 }} :
+          <span
+            :style="'color:' + giniColor(b[0])"
+            uk-icon="paint-bucket"
+          ></span>
+        </li>
+        <li>
+          Inconnu :
+          <span
+            uk-icon="paint-bucket"
+            :style="'color:' + giniColor(null)"
+          ></span>
+        </li>
+      </ul>
+    </div>
     <client-only>
       <div id="map-wrap" style="height: 500px">
         <l-map :zoom="3" :center="[0, 0]">
@@ -51,22 +71,14 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import WorldJson from '~/assets/custom.geo.json'
 
 export default {
   name: 'GiniMap',
 
-  async fetch() {
-    const { data } = await this.$axios.get(
-      'https://restcountries.eu/rest/v2/all'
-    )
-
-    this.countries = data
-  },
-
   data() {
     return {
-      countries: [],
       coordinates: [],
       url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       attribution:
@@ -77,66 +89,65 @@ export default {
   },
 
   computed: {
+    ...mapGetters({
+      countries: 'gini/countries',
+      average: 'gini/average',
+      max: 'gini/max',
+      min: 'gini/min',
+      size: 'gini/size'
+    }),
+
+    bearing() {
+      return [
+        this.min,
+        (this.size / 6) * 1 + this.min,
+        (this.size / 6) * 2 + this.min,
+        (this.size / 6) * 3 + this.min,
+        (this.size / 6) * 4 + this.min,
+        (this.size / 6) * 5 + this.min,
+        (this.size / 6) * 6 + this.min
+      ]
+    },
+
+    bearingFormat() {
+      const bearingFormat = []
+      for (let i = 0; i < this.bearing.length - 1; i++) {
+        bearingFormat.push([this.bearing[i], this.bearing[i + 1]])
+      }
+      return bearingFormat
+    },
     countriesGini() {
       const countriesGini = {}
 
       this.countries.forEach((country) => {
-        countriesGini[country.alpha3Code] = country.gini
+        countriesGini[country.alpha3Code] = {
+          gini: country.gini,
+          translations: country.translations
+        }
       })
 
       return countriesGini
     },
 
-    average() {
-      let average = 0
-      this.countries
-        .filter((country) => country.gini !== null)
-        .forEach((country) => (average += country.gini))
-      average /= this.countries.length
-
-      return average
-    },
-
     geojson() {
       WorldJson.features.forEach(async (country) => {
-        country.properties.gini = await this.countriesGini[
-          country.properties.iso_a3
-        ]
+        try {
+          country.properties.gini = await this.countriesGini[
+            country.properties.iso_a3
+          ].gini
+          country.properties.fr = await this.countriesGini[
+            country.properties.iso_a3
+          ].translations.fr
 
-        country.properties.color = await this.giniColor(country.properties.gini)
+          country.properties.color = await this.giniColor(
+            country.properties.gini
+          )
+        } catch {
+          country.properties.gini = null
+          country.properties.color = await this.giniColor(null)
+        }
       })
       return WorldJson
-    },
-
-    gini() {
-      const gini = this.countries
-        .filter((country) => country.gini !== null)
-        .map((country) => country.gini)
-      return gini.sort(function(a, b) {
-        return a - b
-      })
-    },
-
-    max() {
-      return this.gini[this.gini.length - 1]
-    },
-
-    min() {
-      return this.gini[0]
-    },
-
-    median() {
-      const middle = this.gini.length / 2
-      if (Number.isInteger(middle)) {
-        return this.gini[middle]
-      } else {
-        return (
-          (this.gini[Number.parseInt(middle)] +
-            this.gini[Number.parseInt(middle)] +
-            1) /
-          2
-        )
-      }
     },
 
     styleFunction() {
@@ -160,15 +171,22 @@ export default {
         return () => {}
       }
       return (feature, layer) => {
-        let gini
-        if (feature.properties.gini === null) {
-          gini = 'Inconnue'
+        let gini, name
+
+        if (!feature.properties.gini) {
+          gini = 'Inconnu'
         } else {
           gini = Math.round(feature.properties.gini * 100) / 10000
         }
 
+        if (!feature.properties.fr) {
+          name = feature.properties.name
+        } else {
+          name = feature.properties.fr
+        }
+
         return layer.bindTooltip(
-          `<div>Pays : ${feature.properties.name}</div><div>Indice de gini : ${gini}</div>`,
+          `<div>Pays : ${name}</div><div>Indice de gini : ${gini}</div>`,
           {
             permanent: false,
             sticky: true
@@ -180,20 +198,20 @@ export default {
 
   methods: {
     giniColor(gini) {
-      if (gini === null || gini === undefined) {
+      if (!gini) {
         return '#666666'
-      } else if (gini >= 83.3) {
-        return '#FF0000'
-      } else if (gini >= 66.6) {
-        return '#CC3300'
-      } else if (gini >= 50) {
-        return '#996600'
-      } else if (gini >= 33.3) {
-        return '#669900'
-      } else if (gini >= 16.6) {
-        return '#33CC00'
-      } else {
+      } else if (gini < this.bearing[1]) {
         return '#00FF00'
+      } else if (gini < this.bearing[2]) {
+        return '#33CC00'
+      } else if (gini < this.bearing[3]) {
+        return '#669900'
+      } else if (gini < this.bearing[4]) {
+        return '#996600'
+      } else if (gini < this.bearing[5]) {
+        return '#CC3300'
+      } else {
+        return '#FF0000'
       }
     }
   }
