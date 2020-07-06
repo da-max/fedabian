@@ -14,6 +14,7 @@
       <button
         v-show="searchCountry !== ''"
         class="uk-button uk-button-danger uk-button-small uk-margin-right"
+        @click.prevent="resetSearch()"
       >
         Annuler
       </button>
@@ -42,7 +43,11 @@ export default {
     }
   },
   methods: {
-    ...mapActions({ search: 'gini/getByName' })
+    ...mapActions({ search: 'gini/getByName', getAll: 'gini/getAll' }),
+    resetSearch() {
+      this.searchCountry = ''
+      this.getAll()
+    }
   }
 }
 </script>
