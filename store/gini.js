@@ -1,16 +1,31 @@
+import restcountries from 'restcountries-js'
+
 export const state = () => ({
-  countries: []
+  resourceBaseUrl: 'https://restcountries.eu/rest/v2/',
+  countries: [],
+  search: ''
 })
 
 export const mutations = {
   SET_COUNTRIES(state, countries) {
     state.countries = countries
+  },
+
+  SET_SEARCH(state, newSearch) {
+    state.search = newSearch
   }
 }
 
 export const getters = {
   countries(state) {
     return state.countries
+  },
+
+  search(state) {
+    return state.search
+  },
+  resourceBaseUrl(state) {
+    return state.resourceBaseUrl
   },
 
   sorted(state) {
@@ -32,7 +47,7 @@ export const getters = {
     return average
   },
 
-  mediane(state, getters) {
+  mediane(_state, getters) {
     const middle = getters.sorted.length / 2
     if (Number.isInteger(middle)) {
       return getters.sorted[middle]
@@ -59,14 +74,22 @@ export const getters = {
 }
 
 export const actions = {
-  async getAll({ commit }) {
+  async getAll({ commit, getters }) {
     try {
-      const countries = await this.$axios.$get(
-        'https://restcountries.eu/rest/v2/all'
-      )
+      const data = await restcountries().all()
+      commit('SET_COUNTRIES', data)
+    } catch (error) {
+      commit('alerts/ADD_ALERTS', error.body, { root: true })
+    }
+  },
+
+  async getByName({ commit, getters }) {
+    try {
+      const countries = await restcountries().name(getters.search)
+
       commit('SET_COUNTRIES', countries)
     } catch (error) {
-      commit('modules/alert/ADD_ALERT', error.body, { root: true })
+      commit('alerts/ADD_ALERTS', error.body, { root: true })
     }
   }
 }
