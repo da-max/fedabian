@@ -1,7 +1,6 @@
 import restcountries from 'restcountries-js'
 
 export const state = () => ({
-  resourceBaseUrl: 'https://restcountries.eu/rest/v2/',
   countries: [],
   search: ''
 })
@@ -74,12 +73,18 @@ export const getters = {
 }
 
 export const actions = {
-  async getAll({ commit, getters }) {
+  async getAll({ commit }) {
     try {
       const data = await restcountries().all()
       commit('SET_COUNTRIES', data)
     } catch (error) {
-      commit('alerts/ADD_ALERTS', error.body, { root: true })
+      if (error.response.status === 404) {
+        commit('alerts/ADD_404', {}, { root: true })
+      } else if (error.response.status === 500) {
+        commit('alerts/ADD_500', {}, { root: true })
+      } else {
+        commit('alerts/ADD_UNKNOWN', {}, { root: true })
+      }
     }
   },
 
@@ -89,7 +94,13 @@ export const actions = {
 
       commit('SET_COUNTRIES', countries)
     } catch (error) {
-      commit('alerts/ADD_ALERTS', error.body, { root: true })
+      if (error.response.status === 404) {
+        commit('alerts/ADD_404', {}, { root: true })
+      } else if (error.response.status === 500) {
+        commit('alerts/ADD_500', {}, { root: true })
+      } else {
+        commit('alerts/ADD_UNKNOWN', {}, { root: true })
+      }
     }
   }
 }
