@@ -30,6 +30,10 @@ export default {
   name: 'Alert',
 
   props: {
+    status: {
+      default: 'primary',
+      type: String
+    },
     close: {
       default: true,
       type: Boolean
@@ -37,11 +41,13 @@ export default {
     header: {
       default: false,
       type: Boolean
-    },
-    status: {
-      default: 'primary',
-      type: String
     }
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.uk-alert-close {
+  color: black !important;
+}
+</style>

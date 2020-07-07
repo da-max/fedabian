@@ -1,5 +1,5 @@
 <template>
-  <div class="uk-width-2-5@l uk-width-2-3@m uk-margin-auto">
+  <div>
     <div
       v-for="alert in $store.state.alerts.alerts"
       :key="alert.id"

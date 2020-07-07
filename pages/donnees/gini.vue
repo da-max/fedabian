@@ -32,6 +32,7 @@
           </div>
         </div>
         <div class="uk-width-expand">
+          <alerts></alerts>
           <nuxt-child></nuxt-child>
         </div>
       </div>
@@ -43,10 +44,11 @@
 import { mapGetters } from 'vuex'
 import GiniNav from '~/components/gini/Nav'
 import GiniSearchBar from '~/components/gini/SearchBar'
+import Alerts from '~/components/utility/Alerts'
 
 export default {
   name: 'Gini',
-  components: { GiniNav, GiniSearchBar },
+  components: { GiniNav, GiniSearchBar, Alerts },
 
   async fetch() {
     await this.$store.dispatch('gini/getAll')
