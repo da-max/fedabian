@@ -3,20 +3,15 @@
     <form class="uk-form-horizontal uk-margin-medium-bottom">
       <fieldset class="uk-fieldset">
         <legend class="uk-legend">Options</legend>
-        <div uk-grid class="uk-child-width-1-2@m ">
-          <div>
-            <label for="enableOptions" class="uk-form-label"
-              >Afficher les couleurs</label
+        <div uk-grid class="uk-child-width-1-2@m uk-flex uk-flex-beetwen">
+          <div class="uk-form-controls">
+            <button
+              type="button"
+              class="uk-button uk-button-primary uk-button-small"
+              @click.prevent="enableOptions"
             >
-            <div class="uk-form-controls">
-              <input
-                id="enable-tooltip"
-                v-model="enableOptions"
-                type="checkbox"
-                name="enableOptions"
-                class="uk-checkbox"
-              />
-            </div>
+              Actualiser la carte
+            </button>
           </div>
           <div>
             <label for="enableTooltip" class="uk-form-label"
@@ -35,7 +30,7 @@
         </div>
       </fieldset>
     </form>
-    <div v-show="enableOptions" class="uk-margin-large-bottom">
+    <div v-show="enabledOptions" class="uk-margin-large-bottom">
       Indice de Gini comprit entre :
       <ul class="uk-list uk-child-width-1-3@m uk-flex-center" uk-grid>
         <li v-for="b in bearingFormat" :key="b[0]">
@@ -83,8 +78,8 @@ export default {
       url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       attribution:
         '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-      enableOptions: false,
-      enableTooltip: true
+      enableTooltip: true,
+      enabledOptions: false
     }
   },
 
@@ -151,7 +146,7 @@ export default {
     },
 
     styleFunction() {
-      if (!this.enableOptions) {
+      if (!this.enabledOptions) {
         return () => {}
       }
       return (feature) => ({
@@ -167,7 +162,10 @@ export default {
     },
 
     onEachFeatureFunction() {
-      if ((!this.enableOptions && !this.enableTooltip) || !this.enableTooltip) {
+      if (
+        (!this.enabledOptions && !this.enableTooltip) ||
+        !this.enableTooltip
+      ) {
         return () => {}
       }
       return (feature, layer) => {
@@ -212,6 +210,14 @@ export default {
         return '#CC3300'
       } else {
         return '#FF0000'
+      }
+    },
+    async enableOptions() {
+      if (this.enabledOptions === true) {
+        this.enabledOptions = await false
+        this.enabledOptions = true
+      } else {
+        this.enabledOptions = true
       }
     }
   }
