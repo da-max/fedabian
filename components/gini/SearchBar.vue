@@ -13,10 +13,11 @@
       </div>
       <button
         v-show="searchCountry !== ''"
-        class="uk-button uk-button-danger uk-button-small uk-margin-right"
+        type="button"
+        class="uk-button uk-button-text uk-button-small uk-margin-right"
         @click.prevent="resetSearch()"
       >
-        Annuler
+        Réinitialiser
       </button>
       <input
         type="submit"
