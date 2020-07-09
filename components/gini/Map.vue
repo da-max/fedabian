@@ -111,15 +111,16 @@ export default {
       }
       return bearingFormat
     },
+
     countriesGini() {
       const countriesGini = {}
-
-      this.countries.forEach((country) => {
-        countriesGini[country.alpha3Code] = {
-          gini: country.gini,
-          translations: country.translations
-        }
-      })
+      this.countries.forEach(
+        (country) =>
+          (countriesGini[country.alpha3Code] = {
+            gini: country.gini,
+            translations: country.translations
+          })
+      )
 
       return countriesGini
     },

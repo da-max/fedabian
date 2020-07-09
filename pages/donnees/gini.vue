@@ -19,15 +19,24 @@
             </div>
             <div>
               <span class="uk-label">Médiane</span>
-              {{ Math.round(mediane * 100) / 10000 }}
+              <span v-if="isNaN(mediane)">Inconnu</span>
+              <span v-else>
+                {{ Math.round(mediane * 100) / 10000 }}
+              </span>
             </div>
             <div>
               <span class="uk-label">Minimum</span>
-              {{ Math.round(min * 100) / 10000 }} ({{ minCountry }})
+              <span v-if="isNaN(min)">Inconnu</span>
+              <span v-else>
+                {{ Math.round(min * 100) / 10000 }} ({{ minCountry }})</span
+              >
             </div>
             <div>
               <span class="uk-label">Maximum</span>
-              {{ Math.round(max * 100) / 10000 }} ({{ maxCountry }})
+              <span v-if="isNaN(max)">Inconnu</span>
+              <span v-else>
+                {{ Math.round(max * 100) / 10000 }} ({{ maxCountry }})</span
+              >
             </div>
           </div>
         </div>
@@ -62,10 +71,18 @@ export default {
       countries: 'gini/countries'
     }),
     minCountry() {
-      return this.countries.find((c) => c.gini === this.min).translations.fr
+      try {
+        return this.countries.find((c) => c.gini === this.min).translations.fr
+      } catch {
+        return 'Inconnu'
+      }
     },
     maxCountry() {
-      return this.countries.find((c) => c.gini === this.max).translations.fr
+      try {
+        return this.countries.find((c) => c.gini === this.max).translations.fr
+      } catch {
+        return 'Inconnu'
+      }
     }
   }
 }
