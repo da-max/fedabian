@@ -1,8 +1,29 @@
 import restcountries from 'restcountries-js'
 
 export const state = () => ({
+  allCountries: [],
   countries: [],
-  search: ''
+  search: '',
+  searchCriteria: '',
+  searchCriterias: {
+    name: {
+      name: 'Nom du pays',
+      description: ''
+    },
+    languages: {
+      name: 'Langue du pays',
+      description: 'Le nom de la langue doit être en anglais.'
+    },
+    capital: {
+      name: 'Capital du pays',
+      description: 'Recherche par capital.'
+    },
+    region: {
+      name: 'Région du pays',
+      description:
+        'Recherche par région (valeur possible : Africa, Americas, Asia, Europe, Oceania).'
+    }
+  }
 })
 
 export const mutations = {
@@ -10,14 +31,43 @@ export const mutations = {
     state.countries = countries
   },
 
+  SET_ALL_COUNTRIES(state, countries) {
+    state.allCountries = countries
+    state.countries = countries
+  },
+
   SET_SEARCH(state, newSearch) {
     state.search = newSearch
+    if (state.searchCriteria === 'name') {
+      state.countries = state.allCountries.filter(
+        (country) => String(country.translations.fr).search(state.search) !== -1
+      )
+    } else if (state.searchCriteria === 'languages') {
+      state.countries = state.allCountries.filter((country) =>
+        country.languages.find(
+          (language) => language.name.search(state.search) !== -1
+        )
+      )
+    } else {
+      state.countries = state.allCountries.filter(
+        (country) =>
+          String(country[state.searchCriteria]).search(state.search) !== -1
+      )
+    }
+  },
+
+  SET_SEARCH_CRITERIA(state, newCriteria) {
+    state.searchCriteria = newCriteria
   }
 }
 
 export const getters = {
   countries(state) {
     return state.countries
+  },
+
+  searchCriterias(state) {
+    return state.searchCriterias
   },
 
   search(state) {
@@ -76,7 +126,7 @@ export const actions = {
   async getAll({ commit }) {
     try {
       const data = await restcountries().all()
-      commit('SET_COUNTRIES', data)
+      commit('SET_ALL_COUNTRIES', data)
     } catch (error) {
       if (error.response.status === 404) {
         commit('alerts/ADD_404', {}, { root: true })
