@@ -20,6 +20,9 @@ module.exports = {
    ** Customize the progress-bar color
    */
   loading: { color: '#ed8936' },
+  router: {
+    linkExactActiveClass: 'active-link'
+  },
   /*
    ** Global CSS
    */
