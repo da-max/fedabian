@@ -1,14 +1,15 @@
 <template>
   <article class="uk-article">
-    <h2 class="uk-text-center uk-article-title">
+    <h1 class="uk-text-center uk-article-title">
       Qu’est ce que le coefficient de Gini ?
-    </h2>
+    </h1>
     <hr />
     <h3>Définition</h3>
     <p class="uk-article-meta">
       <a
         href="https://www.insee.fr/fr/metadonnees/definition/c1551"
         target="_blank"
+        rel="noopener noreferrer"
       >
         D’après l’Institut National de la Statistique et des Études Économiques
         (INSEE)

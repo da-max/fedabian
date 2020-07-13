@@ -1,8 +1,8 @@
 <template>
-  <section class="uk-article">
-    <h2 class="uk-text-center  uk-article-title">
+  <article class="uk-article">
+    <h1 class="uk-text-center uk-article-title">
       L’indice de Gini dans le monde
-    </h2>
+    </h1>
     <hr />
     <ul uk-accordion="multiple: true">
       <li>
@@ -18,7 +18,7 @@
         </div>
       </li>
     </ul>
-  </section>
+  </article>
 </template>
 
 <script>

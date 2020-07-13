@@ -40,10 +40,10 @@
             </div>
           </div>
         </div>
-        <div class="uk-width-expand">
+        <section class="uk-width-expand">
           <alerts></alerts>
           <nuxt-child></nuxt-child>
-        </div>
+        </section>
       </div>
     </div>
   </main>
