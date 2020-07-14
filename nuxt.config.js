@@ -21,7 +21,7 @@ module.exports = {
    */
   loading: { color: '#ed8936' },
   router: {
-    linkExactActiveClass: 'active-link'
+    linkActiveClass: 'active-link'
   },
   /*
    ** Global CSS
