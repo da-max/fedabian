@@ -7,7 +7,6 @@
             <li class="uk-parent">
               <nuxt-link to="/a-propos">Présentation</nuxt-link>
             </li>
-            <!-- This link has curent-page for so that it is taken into account in the css file (generate by purgecss) -->
             <li class="uk-parent">
               <nuxt-link to="/mes-projets">Mes projets</nuxt-link>
             </li>
@@ -20,6 +19,9 @@
           <ul class="uk-navbar-nav">
             <li class="uk-parent">
               <nuxt-link to="/me-contacter">Me contacter</nuxt-link>
+            </li>
+            <li>
+              <nuxt-link to="/donnees/gini">Coefficient de Gini</nuxt-link>
             </li>
             <li v-if="$store.state.auth.loggedIn">
               <a href="#" class="uk-navbar-toggle">Espace administration</a>
@@ -73,6 +75,9 @@
           </li>
           <li>
             <nuxt-link to="/me-contacter">Me contacter</nuxt-link>
+          </li>
+          <li>
+            <nuxt-link to="/donnees/gini">Coefficient de Gini</nuxt-link>
           </li>
         </ul>
       </div>
