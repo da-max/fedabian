@@ -62,6 +62,7 @@ export default {
   async fetch() {
     await this.$store.dispatch('gini/getAll')
   },
+
   computed: {
     ...mapGetters({
       average: 'gini/average',
@@ -83,6 +84,25 @@ export default {
       } catch {
         return 'Inconnu'
       }
+    }
+  },
+
+  head() {
+    return {
+      title: 'Coefficient de Gini | Fedabian',
+      meta: [
+        {
+          hib: 'description-page',
+          name: 'description',
+          content:
+            'Application permettant de visualiser les coefficients de Gini des différents pays du monde.'
+        },
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content: 'Coefficient de Gini, coefficient de Gini dans le monde'
+        }
+      ]
     }
   }
 }

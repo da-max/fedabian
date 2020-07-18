@@ -36,6 +36,24 @@
 
 <script>
 export default {
-  name: 'GiniDefinition'
+  name: 'GiniDefinition',
+  head() {
+    return {
+      title: 'Définition du coefficient de Gini | Fedabian',
+      meta: [
+        {
+          hid: 'description-page',
+          name: 'description',
+          content: 'Définition du coefficient de Gini'
+        },
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content:
+            'Définition coefficient de Gini, coefficient de Gini, quest-ce que le coefficient de Gini'
+        }
+      ]
+    }
+  }
 }
 </script>

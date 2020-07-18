@@ -52,6 +52,24 @@
 
 <script>
 export default {
-  name: 'GiniAbout'
+  name: 'GiniAbout',
+  head() {
+    return {
+      title: 'A propos de cette application | Fedabian',
+      meta: [
+        {
+          hid: 'description-page',
+          name: 'description',
+          content: 'À propos de l’application « Gini »'
+        },
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content:
+            'Nuxtjs coefficient de Gini, coefficient de Gini dans le monde, restcountries coefficient de Gini'
+        }
+      ]
+    }
+  }
 }
 </script>

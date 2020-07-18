@@ -27,6 +27,24 @@ import GiniTable from '~/components/gini/Table'
 
 export default {
   name: 'GiniWorld',
-  components: { GiniMap, GiniTable }
+  components: { GiniMap, GiniTable },
+  head() {
+    return {
+      title: 'Le coefficient de Gini dans le monde | Fedabian',
+      meta: [
+        {
+          hid: 'description-page',
+          name: 'description',
+          content: 'Le coefficient de Gini dans le monde'
+        },
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content:
+            'Nuxtjs coefficient de Gini, coefficient de Gini dans le monde, restcountries coefficient de Gini, coefficient de Gini, monde gini'
+        }
+      ]
+    }
+  }
 }
 </script>
