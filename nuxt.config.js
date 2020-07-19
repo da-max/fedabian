@@ -33,7 +33,8 @@ module.exports = {
    */
   plugins: [
     { src: '~/plugins/uikit', mode: 'client' },
-    { src: '~/plugins/rich-editor', mode: 'client' }
+    { src: '~/plugins/rich-editor', mode: 'client' },
+    { src: '~/plugins/axios' }
   ],
   /*
    ** Nuxt.js dev-modules
