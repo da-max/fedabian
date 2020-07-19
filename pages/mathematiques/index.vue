@@ -11,10 +11,10 @@
 
 <script>
 export default {
-  name: 'Mathematics',
+  name: 'MathematicsIndex',
   async fetch() {
     try {
-      const content = await this.$mathematicalApi.$get('README.md/raw', {
+      const content = await this.$mathematicsApi.$get('README.md/raw', {
         params: { ref: 'master' }
       })
       this.content = content
