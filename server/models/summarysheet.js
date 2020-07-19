@@ -4,7 +4,8 @@ module.exports = (sequelize, DataTypes) => {
     'SummarySheet',
     {
       name: DataTypes.STRING,
-      url: DataTypes.STRING
+      url: DataTypes.STRING,
+      slug: DataTypes.STRING
     },
     {}
   )
