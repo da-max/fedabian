@@ -1,28 +1,22 @@
-export default ({ $axios, $store }, inject) => {
-  const mathematicalApi = $axios.create({
+export default ({ $axios, error }, inject) => {
+  const mathematicsApi = $axios.create({
     headers: {
       common: {
         Authorization: ''
       }
     }
   })
-  mathematicalApi.setBaseURL(
+  mathematicsApi.setBaseURL(
     'https://gitlab.com/api/v4/projects/18845540/repository/files/'
   )
-  inject('mathematicalApi', mathematicalApi)
+  inject('mathematicsApi', mathematicsApi)
 
-  $axios.onError((error) => {
-    const code = parseInt(error.response && error.response.status)
-    if (code === 400) {
-      $store.commit('alerts/ADD_400')
-    } else if (code === 500) {
-      $store.commit('alerts/ADD_500')
-    } else if (code === 404) {
-      $store.commit('alerts/ADD_404')
-    } else if (code === 503) {
-      $store.commit('alerts/ADD_503')
-    } else {
-      $store.commit('alerts/ADD_UNKNOWN')
-    }
+  $axios.onError((err) => {
+    const code = parseInt(err.response && err.response.statusCode)
+    const content = String(err.response && err.response.statusText)
+    error({
+      statusCode: code,
+      message: content
+    })
   })
 }
