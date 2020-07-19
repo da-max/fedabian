@@ -123,6 +123,11 @@ module.exports = {
     use: ['@abreto/markdown-it-katex', '@hackmd/markdown-it-imsize']
   },
   /*
+   ** NuxtJs telemetry
+   ** See https://github.com/nuxt/telemetry
+   */
+  telemetry: false,
+  /*
    ** Build configuration
    */
   build: {

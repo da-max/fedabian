@@ -41,9 +41,9 @@
     "markdown-it": "^10.0.0",
     "mysql2": "^1.5.2",
     "nodemailer": "^6.4.6",
-    "nuxt": "^2.0.0",
+    "nuxt": "^2.13.3",
     "nuxt-fontawesome": "^0.4.0",
-    "sequelize": "^5.21.7"
+    "sequelize": "^5.22.3"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^2.0.0",
@@ -60,7 +60,7 @@
     "nodemon": "^1.18.9",
     "prettier": "^1.19.1",
     "sass-loader": "^8.0.2",
-    "uikit": "^3.4.4",
+    "uikit": "^3.5.5",
     "vue-jest": "^4.0.0-0"
   }
 }
