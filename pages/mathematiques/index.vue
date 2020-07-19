@@ -1,7 +1,7 @@
 <template>
   <section class="uk-margin-large-top uk-margin-large-bottom">
     <article
-      class="uk-tile uk-tile-default uk-light uk-width-2-3@m uk-border-rounded uk-margin-auto"
+      class="uk-tile uk-tile-default uk-light uk-container uk-border-rounded uk-margin-auto"
       uk-scrollspy="taget: > div > *; cls: uk-animation-fade; delay: 500"
     >
       <div v-html="$md.render(content)"></div>
@@ -12,19 +12,25 @@
 <script>
 export default {
   name: 'Mathematics',
-  async asyncData({ $axios, $md, error }) {
+  async fetch() {
     try {
-      const content = await $axios.$get(
-        'https://gitlab.com/Damax/mathematiques/-/raw/maste/probabilites/loi_normale.md'
-      )
-      return { content }
+      const content = await this.$mathematicalApi.$get('README.md/raw', {
+        params: { ref: 'master' }
+      })
+      this.content = content
     } catch (err) {
       console.log(err.response)
 
-      error({
+      this.$error({
         statusCode: err.response,
         message: err.response
       })
+    }
+  },
+
+  data() {
+    return {
+      content: ''
     }
   }
 }
