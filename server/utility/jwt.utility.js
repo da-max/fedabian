@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken')
 
-const JWT_SIGN_SECRET = process.env.JWT_SIGN_SECRET
+const JWT_SIGN_SECRET = 'process.env.JWT_SIGN_SECRETIDontNowWhyICanGetj'
 
 module.exports = {
   generateTokenForUser: (userData) => {
@@ -17,7 +17,10 @@ module.exports = {
   },
 
   parseAuthorization(authorization) {
-    return authorization !== null ? authorization.replace('Bearer ', '') : null
+    console.log(authorization)
+    return authorization !== null && authorization !== undefined
+      ? authorization.replace('Bearer ', '')
+      : null
   },
 
   getUserId(authorization) {
