@@ -17,7 +17,6 @@ module.exports = {
   },
 
   parseAuthorization(authorization) {
-    console.log(authorization)
     return authorization !== null && authorization !== undefined
       ? authorization.replace('Bearer ', '')
       : null
