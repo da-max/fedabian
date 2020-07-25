@@ -3,7 +3,14 @@
     <section
       class="uk-light uk-margin-large-top uk-padding uk-margin-large-bottom uk-background-default"
     >
-      <div uk-grid>
+      <p v-if="$fetchState.pending">
+        Chargement de l’application mathématiques...
+      </p>
+      <p v-else-if="$fetchState.error">
+        Erreur lors du chargement de l’application mathématiques :
+        {{ $fetchState.error.message }}
+      </p>
+      <div v-else uk-grid>
         <div class="uk-width-1-4@m">
           <mathematics-nav></mathematics-nav>
         </div>
@@ -19,6 +26,11 @@
 import MathematicsNav from '~/components/mathematics/Nav'
 export default {
   name: 'Mathematics',
-  components: { MathematicsNav }
+  components: { MathematicsNav },
+
+  async fetch() {
+    await this.$store.dispatch('mathematics/getAllSummarySheets')
+    await this.$store.dispatch('mathematics/getAllThemes')
+  }
 }
 </script>
