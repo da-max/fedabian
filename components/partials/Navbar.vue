@@ -22,7 +22,7 @@
               <nuxt-link to="/me-contacter">Me contacter</nuxt-link>
             </li>
             <li class="uk-parent">
-              <nuxt-link to="/mathematiques">Mathématiqes</nuxt-link>
+              <nuxt-link to="/mathematiques">Mathématiques</nuxt-link>
             </li>
             <li v-if="$store.state.auth.loggedIn">
               <a href="#" class="uk-navbar-toggle">Espace administration</a>
@@ -78,7 +78,7 @@
             <nuxt-link to="/me-contacter">Me contacter</nuxt-link>
           </li>
           <li>
-            <nuxt-link to="/mathematiques">Mathématiqes</nuxt-link>
+            <nuxt-link to="/mathematiques">Mathématiques</nuxt-link>
           </li>
         </ul>
       </div>
