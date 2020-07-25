@@ -27,7 +27,7 @@ exports.router = (() => {
     .get(mathematicsControlers.summarySheetsList)
   apiRouter.route('/mathematics/themes').get(mathematicsControlers.themesList)
   apiRouter
-    .route('/mathematics/summary-sheets/:summarySheetId')
+    .route('/mathematics/summary-sheets/:summarySheetSlug')
     .get(mathematicsControlers.summarySheetRetrive)
 
   // Send mail routes

@@ -4,7 +4,7 @@ const models = require('../models')
 module.exports = {
   async summarySheetsList(_req, res) {
     const summarySheets = await models.SummarySheet.findAll({
-      attributes: ['id', 'name', 'url', 'themeId']
+      attributes: ['id', 'name', 'url', 'themeId', 'slug']
     }).catch(() => {
       return res.status(500).json({ error: 'cannot get summary sheets.' })
     })
@@ -13,14 +13,15 @@ module.exports = {
   },
 
   summarySheetRetrive(req, res) {
-    const summarySheetId = req.params.summarySheetId
-    console.log(summarySheetId)
+    const summarySheetSlug = req.params.summarySheetSlug
+      ? req.params.summarySheetSlug
+      : null
 
     asyncLib.waterfall([
       (done) => {
         models.SummarySheet.findOne({
           attributes: ['id', 'name', 'url'],
-          where: { id: summarySheetId }
+          where: { slug: summarySheetSlug }
         })
           .then((summarySheet) => {
             done(null, summarySheet)
@@ -41,7 +42,7 @@ module.exports = {
 
   async themesList(_req, res) {
     const themes = await models.Theme.findAll({
-      attributes: ['id', 'name']
+      attributes: ['id', 'name', 'slug']
     }).catch(() =>
       res.status(500).json({ error: 'cannot get mathematics themes.' })
     )
