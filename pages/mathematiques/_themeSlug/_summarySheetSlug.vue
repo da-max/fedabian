@@ -9,20 +9,23 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   name: 'MathematicsSummarySheet',
   async fetch() {
-    this.summarySheet = await this.$axios.$get(
-      `/mathematics/summary-sheets/${this.$route.params.slug}`
-    )
     this.content = await this.$mathematicsApi.$get(
       `${this.summarySheet.url}/raw?ref=master`
     )
   },
+
   data() {
-    return {
-      content: '',
-      summarySheet: {}
+    return { content: '' }
+  },
+
+  computed: {
+    ...mapGetters({ summarySheetBySlug: 'mathematics/summarySheetBySlug' }),
+    summarySheet() {
+      return this.summarySheetBySlug(this.$route.params.summarySheetSlug)
     }
   }
 }
