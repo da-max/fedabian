@@ -19,7 +19,7 @@
           <nuxt-child></nuxt-child>
         </article>
         <totop
-          class="uk-position-bottom-right uk-position-fixed uk-margin-large-bottom uk-margin-xlarge-right"
+          class="uk-position-bottom-right uk-position-fixed uk-margin-large-bottom uk-margin-xlarge-right uk-position-z-index"
         ></totop>
       </div>
     </section>
