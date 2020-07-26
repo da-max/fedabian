@@ -12,11 +12,15 @@
       </p>
       <div v-else uk-grid>
         <div class="uk-width-1-4@m">
-          <mathematics-nav uk-sticky="media: @m; offset: 100"></mathematics-nav>
+          <mathematics-nav uk-sticky="media: @m; offset: 100">
+          </mathematics-nav>
         </div>
         <article class="uk-width-expand">
           <nuxt-child></nuxt-child>
         </article>
+        <totop
+          class="uk-position-bottom-right uk-position-fixed uk-margin-large-bottom uk-margin-xlarge-right"
+        ></totop>
       </div>
     </section>
   </main>
@@ -24,9 +28,11 @@
 
 <script>
 import MathematicsNav from '~/components/mathematics/Nav'
+import Totop from '~/components/utility/Totop'
+
 export default {
   name: 'Mathematics',
-  components: { MathematicsNav },
+  components: { MathematicsNav, Totop },
 
   async fetch() {
     await this.$store.dispatch('mathematics/getAllSummarySheets')
