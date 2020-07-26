@@ -27,6 +27,9 @@ export default {
     summarySheet() {
       return this.summarySheetBySlug(this.$route.params.summarySheetSlug)
     }
+  },
+  watch: {
+    '$route.params': '$fetch'
   }
 }
 </script>
