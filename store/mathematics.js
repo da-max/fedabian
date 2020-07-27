@@ -52,7 +52,21 @@ export const actions = {
   },
 
   async updateSummarySheet({ commit }, summarySheet) {
-    await this.$axios.$put(`/mathematics/summary-sheets/${summarySheet.id}`)
+    await this.$axios.$put(
+      `/mathematics/summary-sheets/${summarySheet.slug}`,
+      summarySheet
+    )
+    commit(
+      'alerts/ADD_ALERTS',
+      {
+        header: true,
+        headerContent: 'Fiche mise  jour',
+        body: 'La fiche de mathématiques a bien été mise à jour.',
+        status: 'success',
+        close: true
+      },
+      { root: true }
+    )
   }
 }
 
