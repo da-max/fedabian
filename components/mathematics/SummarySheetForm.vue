@@ -207,7 +207,8 @@ export default {
   methods: {
     ...mapActions({
       addTheme: 'mathematics/addTheme',
-      addSummarySheet: 'mathematics/addSummarySheet'
+      addSummarySheet: 'mathematics/addSummarySheet',
+      updateSummarySheet: 'mathematics/updateSummarySheet'
     }),
 
     ...mapMutations({
