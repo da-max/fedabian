@@ -4,13 +4,13 @@ module.exports = (sequelize, DataTypes) => {
     'SummarySheet',
     {
       name: DataTypes.STRING,
-      url: DataTypes.STRING,
+      path: DataTypes.STRING,
       slug: DataTypes.STRING
     },
     {}
   )
   SummarySheet.associate = function(models) {
-    SummarySheet.hasOne(models.Theme, { foreignKey: 'themeId', as: 'theme' })
+    SummarySheet.belongsTo(models.Theme, { foreignKey: 'themeId' })
   }
   return SummarySheet
 }
