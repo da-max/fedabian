@@ -4,9 +4,8 @@
     :class="{ 'uk-flex-top ': center, 'uk-modal-container': container }"
     uk-modal
     bg-close="true"
-    class="uk-light"
   >
-    <div class="uk-modal-dialog">
+    <div class="uk-modal-dialog uk-light">
       <button
         v-show="closeButton"
         class="uk-modal-close-default"
