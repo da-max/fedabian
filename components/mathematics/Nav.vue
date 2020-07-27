@@ -17,7 +17,9 @@
       </li>
       <li v-if="$store.state.auth.loggedIn" class="uk-nav-divider"></li>
       <li v-if="$store.state.auth.loggedIn">
-        <nuxt-link to="/admin/mathematiques/ajouter-une-fiche">Ajouter une fiche de révision</nuxt-link>
+        <nuxt-link to="/admin/mathematiques/ajouter-une-fiche"
+          >Ajouter une fiche de révision</nuxt-link
+        >
       </li>
     </ul>
   </nav>
