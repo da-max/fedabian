@@ -1,6 +1,6 @@
 <template>
   <main class="uk-container">
-    <section
+    <div
       class="uk-light uk-margin-large-top uk-padding uk-margin-large-bottom uk-background-default"
     >
       <p v-if="$fetchState.pending">
@@ -15,14 +15,14 @@
           <mathematics-nav uk-sticky="media: @m; offset: 100">
           </mathematics-nav>
         </div>
-        <article class="uk-width-expand">
+        <section class="uk-width-expand">
           <nuxt-child></nuxt-child>
-        </article>
+        </section>
         <totop
           class="uk-position-bottom-right uk-position-fixed uk-margin-large-bottom uk-margin-xlarge-right uk-position-z-index"
         ></totop>
       </div>
-    </section>
+    </div>
   </main>
 </template>
 
