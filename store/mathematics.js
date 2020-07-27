@@ -16,6 +16,12 @@ export const mutations = {
     state.summarySheets = summarySheets
   },
 
+  CHANGE_SUMMARY_SHEET_ELEMENT(state, summarySheet) {
+    state.summarySheets.find((sheet) => sheet.id === summarySheet.id)[
+      summarySheet.element
+    ] = summarySheet.value
+  },
+
   ADD_SUMMARY_SHEETS(state, summarySheets) {
     state.summarySheets.push(summarySheets)
   }
@@ -43,6 +49,10 @@ export const actions = {
       summarySheet
     )
     commit('ADD_SUMMARY_SHEETS', response)
+  },
+
+  async updateSummarySheet({ commit }, summarySheet) {
+    await this.$axios.$put(`/mathematics/summary-sheets/${summarySheet.id}`)
   }
 }
 
@@ -54,5 +64,7 @@ export const getters = {
     return state.summarySheets
   },
   summarySheetBySlug: (state) => (slug) =>
-    state.summarySheets.find((summarySheet) => summarySheet.slug === slug)
+    state.summarySheets.find((summarySheet) => summarySheet.slug === slug),
+  summarySheetById: (state) => (id) =>
+    state.summarySheets.find((summarySheet) => summarySheet.id === id)
 }
