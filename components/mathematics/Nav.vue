@@ -16,6 +16,14 @@
         </ul>
       </li>
       <li v-if="$store.state.auth.loggedIn" class="uk-nav-divider"></li>
+      <li v-if="$store.state.auth.loggedIn && $route.params.summarySheetSlug">
+        <nuxt-link
+          :to="
+            `/admin/mathematiques/${$route.params.themeSlug}/${$route.params.summarySheetSlug}`
+          "
+          >Modifier cette fiche</nuxt-link
+        >
+      </li>
       <li v-if="$store.state.auth.loggedIn">
         <nuxt-link to="/admin/mathematiques/ajouter-une-fiche"
           >Ajouter une fiche de révision</nuxt-link
