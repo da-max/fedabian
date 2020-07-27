@@ -152,5 +152,48 @@ module.exports = {
         }
       }
     ])
+  },
+
+  summarySheetUpdate(req, res) {
+    const name = req.body.name
+    const slug = req.params.summarySheetSlug
+    const path = req.body.path
+    const themeId = req.body.themeId
+
+    console.log(req.body)
+
+    asyncLib.waterfall([
+      (done) => {
+        models.SummarySheet.findOne({
+          attributes: ['id', 'name', 'slug', 'path', 'themeId'],
+          where: { slug }
+        })
+          .then((summarySheetFound) => {
+            done(null, summarySheetFound)
+          })
+          .catch(() =>
+            res.status(500).json({ error: 'cannot find summary sheet.' })
+          )
+      },
+      (summarySheetFound) => {
+        if (summarySheetFound) {
+          summarySheetFound
+            .update({
+              name,
+              path,
+              slug,
+              themeId
+            })
+            .then(() =>
+              res.status(201).json({ message: 'summary sheet updated.' })
+            )
+            .catch(() =>
+              res.status(500).json({ error: 'cannot update project' })
+            )
+        } else {
+          return res.status(403).json({ error: 'summary sheet not found.' })
+        }
+      }
+    ])
   }
 }

@@ -5,6 +5,8 @@ const projectsControlers = require('./routes/projectsControlers')
 const contactControlers = require('./routes/contactControlers')
 const mathematicsControlers = require('./routes/mathematicsControlers')
 
+const authMiddleware = require('./middlewares/auth')
+
 exports.router = (() => {
   const apiRouter = app.Router()
 
@@ -29,10 +31,16 @@ exports.router = (() => {
   apiRouter
     .route('/mathematics/summary-sheets/:summarySheetSlug')
     .get(mathematicsControlers.summarySheetRetrive)
-  apiRouter.route('/mathematics/themes').post(mathematicsControlers.themeCreate)
+  apiRouter
+    .route('/mathematics/themes')
+    .post(authMiddleware, mathematicsControlers.themeCreate)
   apiRouter
     .route('/mathematics/summary-sheets')
-    .post(mathematicsControlers.summarySheetCreate)
+    .post(authMiddleware, mathematicsControlers.summarySheetCreate)
+
+  apiRouter
+    .route('/mathematics/summary-sheets/:summarySheetSlug')
+    .put(authMiddleware, mathematicsControlers.summarySheetUpdate)
 
   // Send mail routes
   apiRouter.route('/send-mail').post(contactControlers.sendMail)
