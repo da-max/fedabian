@@ -14,7 +14,7 @@ export default {
   name: 'MathematicsSummarySheet',
   async fetch() {
     this.content = await this.$mathematicsApi.$get(
-      `${this.summarySheet.url}/raw?ref=master`
+      `${this.summarySheet.path}/raw?ref=master`
     )
   },
 
