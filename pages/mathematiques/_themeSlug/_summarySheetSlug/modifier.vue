@@ -1,7 +1,5 @@
 <template>
   <div>
-    <h1 class="uk-text-center">Modifier la fiche de révision</h1>
-    <alerts></alerts>
     <summary-sheet-form
       :summary-sheet-id="summarySheet.id"
     ></summary-sheet-form>
@@ -11,12 +9,11 @@
 <script>
 import { mapGetters } from 'vuex'
 import SummarySheetForm from '~/components/mathematics/SummarySheetForm'
-import Alerts from '~/components/utility/Alerts'
 
 export default {
   name: 'UpdateSummarySheet',
   middleware: ['auth'],
-  components: { SummarySheetForm, Alerts },
+  components: { SummarySheetForm },
   computed: {
     ...mapGetters({ summarySheetBySlug: 'mathematics/summarySheetBySlug' }),
     summarySheet() {
