@@ -1,6 +1,7 @@
 <template>
   <div>
     <navbar />
+    <alerts></alerts>
     <nuxt />
     <Footer />
   </div>
@@ -9,11 +10,13 @@
 <script>
 import Navbar from '~/components/partials/Navbar'
 import Footer from '~/components/partials/Footer'
+import Alerts from '~/components/utility/Alerts'
 
 export default {
   components: {
     Navbar,
-    Footer
+    Footer,
+    Alerts
   }
 }
 </script>
