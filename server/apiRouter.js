@@ -29,6 +29,10 @@ exports.router = (() => {
   apiRouter
     .route('/mathematics/summary-sheets/:summarySheetSlug')
     .get(mathematicsControlers.summarySheetRetrive)
+  apiRouter.route('/mathematics/themes').post(mathematicsControlers.themeCreate)
+  apiRouter
+    .route('/mathematics/summary-sheets')
+    .post(mathematicsControlers.summarySheetCreate)
 
   // Send mail routes
   apiRouter.route('/send-mail').post(contactControlers.sendMail)
