@@ -77,7 +77,6 @@ module.exports = {
         attributes: ['id', 'name', 'path', 'slug'],
         where: { slug }
       })
-
       if (!summarySheetFound) {
         const themeFound = await models.Theme.findOne({
           attributes: ['name', 'slug'],
@@ -133,11 +132,15 @@ module.exports = {
     const slug = req.params.summarySheetSlug
 
     try {
-      const summarySheetDelete = await models.SummarySheet.destroy({
+      const summarySheetDelete = await models.SummarySheet.findOne({
+        attributes: ['id', 'name', 'slug', 'path', 'themeId'],
         where: { slug }
       })
       if (summarySheetDelete) {
-        return res.status(201).json({ status: 'summary sheet delete.' })
+        await models.SummarySheet.destroy({
+          where: { slug }
+        })
+        return res.status(201).json(summarySheetDelete)
       } else {
         return res.status(403).json({ error: 'summary sheet not found.' })
       }
