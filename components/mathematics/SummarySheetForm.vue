@@ -231,22 +231,21 @@ export default {
     },
 
     async saveSummarySheet() {
-      if (this.summarySheetId === null) {
-        await this.addSummarySheet({
-          name: this.summarySheetName,
-          slug: this.summarySheetSlug,
-          path: this.summarySheetPath,
-          themeId: this.summarySheetThemeId
-        })
-      } else {
-        await this.updateSummarySheet({
-          id: this.summarySheetId,
-          name: this.summarySheetName,
-          slug: this.summarySheetSlug,
-          path: this.summarySheetPath,
-          themeId: this.summarySheetThemeId
-        })
+      const summarySheet = {
+        name: this.summarySheetName,
+        slug: this.summarySheetSlug,
+        path: this.summarySheetPath,
+        themeId: this.summarySheetThemeId
       }
+      if (this.summarySheetId === null) {
+        await this.addSummarySheet(summarySheet)
+      } else {
+        await this.updateSummarySheet(summarySheet)
+      }
+      this.summarySheetName = ''
+      this.summarySheetSlug = ''
+      this.summarySheetPath = ''
+      this.summarySheetThemeId = ''
     }
   }
 }
