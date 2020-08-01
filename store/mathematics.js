@@ -55,6 +55,17 @@ export const actions = {
       summarySheet
     )
     commit('ADD_SUMMARY_SHEETS', response)
+    commit(
+      'alerts/ADD_ALERTS',
+      {
+        header: true,
+        headerContent: 'Fiche créée',
+        body: 'La fiche de mathématiques a bien été créée.',
+        status: 'success',
+        close: true
+      },
+      { root: true }
+    )
   },
 
   async updateSummarySheet({ commit }, summarySheet) {
@@ -79,7 +90,6 @@ export const actions = {
     const response = await this.$axios.$delete(
       `/mathematics/summary-sheets/${summarySheetSlug}`
     )
-    console.log(response)
     commit('DELETE_SUMMARY_SHEET', response)
     commit(
       'alerts/ADD_ALERTS',
