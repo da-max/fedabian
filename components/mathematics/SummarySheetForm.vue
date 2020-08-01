@@ -50,7 +50,7 @@
     <div class="uk-text-center">
       <input
         type="submit"
-        value="Ajouter la fiche"
+        value="Enregistrer la fiche"
         class="uk-button uk-button-primary"
       />
     </div>
