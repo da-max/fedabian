@@ -4,7 +4,10 @@
     Erreur lors du chargement de la fiche :
     {{ $fetchState.error.message }}
   </p>
-  <main v-else>
+  <main
+    v-else
+    uk-scrollspy="taget: > article > *; cls: uk-animation-fade; delay: 500"
+  >
     <!-- eslint-disable-next-line vue/no-v-html -->
     <article v-html="$md.render(content)"></article>
   </main>
