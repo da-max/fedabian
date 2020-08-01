@@ -5,7 +5,7 @@ export const state = () => ({
 
 export const mutations = {
   ADD_ALERTS(state, alert) {
-    alert.id = state.id
+    alert.id = state.alertId
     state.alerts.push(alert)
     state.alertId++
   },
@@ -62,5 +62,9 @@ export const mutations = {
       status: 'danger',
       close: true
     })
+  },
+
+  DELETE_ALERT(state, alertId) {
+    state.alerts = state.alerts.filter((alert) => alert.id !== alertId)
   }
 }
