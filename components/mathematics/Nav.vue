@@ -99,8 +99,9 @@ export default {
       )
     },
     async deleteCurrentSummarySheet() {
-      await this.deleteSummarySheet(this.summarySheetCurrent.slug)
+      await this.$uikit.modal('#delete-summary-sheet').hide()
       this.$router.push('/mathematiques')
+      this.deleteSummarySheet(this.summarySheetCurrent.slug)
     }
   }
 }
