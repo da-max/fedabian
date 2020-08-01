@@ -6,7 +6,7 @@
       class="uk-margin-medium-top"
     >
       <alert
-        :id="alert.id"
+        :alert-id="alert.id"
         :close="alert.close || null"
         :header="alert.header || false"
         :status="alert.status || null"

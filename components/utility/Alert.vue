@@ -10,7 +10,7 @@
       v-show="close"
       class="uk-alert-close"
       uk-close
-      @click="deleteAlert(id)"
+      @click="deleteAlert(alertId)"
     ></a>
     <div v-show="header">
       <h2 :class="'uk-text-center uk-text-' + status">
@@ -37,7 +37,7 @@ export default {
   name: 'Alert',
 
   props: {
-    id: {
+    alertId: {
       type: Number,
       required: true
     },
