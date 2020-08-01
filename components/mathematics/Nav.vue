@@ -24,6 +24,42 @@
           >Modifier cette fiche</nuxt-link
         >
       </li>
+      <li v-if="$store.state.auth.loggedIn && $route.params.summarySheetSlug">
+        <a uk-toggle="target: #delete-summary-sheet" type="button">
+          Supprimer cette fiche
+        </a>
+        <modal id="delete-summary-sheet" class="uk-light">
+          <template #header>
+            <h3>
+              Supprimer la fiche «
+              {{ summarySheetCurrent.name.toLowerCase() }} »
+            </h3>
+          </template>
+          <template #body>
+            <p>
+              Vous êtes sur le point de supprimer la fiche «
+              {{ summarySheetCurrent.name.toLowerCase() }} ».
+              <span class="uk-text-warning"
+                >Attention, cette action est irréversible !</span
+              >
+            </p>
+          </template>
+          <template #footer>
+            <button
+              class="uk-button uk-button-danger uk-margin-medium-right"
+              @click.prevent="deleteCurrentSummarySheet()"
+            >
+              Supprimer cette fiche
+            </button>
+            <button
+              class="uk-button uk-button-default uk-modal-close"
+              type="button"
+            >
+              Annuler
+            </button>
+          </template>
+        </modal>
+      </li>
       <li v-if="$store.state.auth.loggedIn">
         <nuxt-link to="/mathematiques/ajouter-une-fiche"
           >Ajouter une fiche de révision</nuxt-link
@@ -34,21 +70,37 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
+import Modal from '../utility/Modal'
 export default {
   name: 'MathmeticsNav',
+
+  components: { Modal },
 
   computed: {
     ...mapGetters({
       themes: 'mathematics/themes',
-      summarySheets: 'mathematics/summarySheets'
-    })
+      summarySheets: 'mathematics/summarySheets',
+      summarySheetBySlug: 'mathematics/summarySheetBySlug'
+    }),
+    summarySheetCurrent() {
+      if (this.$route.params.summarySheetSlug) {
+        return this.summarySheetBySlug(this.$route.params.summarySheetSlug)
+      } else {
+        return {}
+      }
+    }
   },
   methods: {
+    ...mapActions({ deleteSummarySheet: 'mathematics/deleteSummarySheet' }),
     filterSummarySheets(themeId) {
       return this.summarySheets.filter(
         (summarySheet) => summarySheet.themeId === themeId
       )
+    },
+    async deleteCurrentSummarySheet() {
+      await this.deleteSummarySheet(this.summarySheetCurrent.slug)
+      this.$router.push('/mathematiques')
     }
   }
 }
