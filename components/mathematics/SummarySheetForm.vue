@@ -120,7 +120,12 @@ export default {
 
   data() {
     return {
-      slug: '',
+      summarySheet: {
+        slug: '',
+        name: '',
+        path: '',
+        themeId: ''
+      },
       theme: {
         name: '',
         slug: ''
@@ -136,7 +141,7 @@ export default {
     summarySheetName: {
       get() {
         if (this.summarySheetId === null) {
-          return ''
+          return this.summarySheet.name
         } else {
           return this.summarySheetById(this.summarySheetId).name
         }
@@ -148,6 +153,8 @@ export default {
             value: newName,
             id: this.summarySheetId
           })
+        } else {
+          this.summarySheet.name = newName
         }
       }
     },
@@ -155,20 +162,20 @@ export default {
     summarySheetSlug: {
       get() {
         if (this.summarySheetId === null) {
-          return this.slug
+          return this.summarySheet.slug
         } else {
           return this.summarySheetById(this.summarySheetId).slug
         }
       },
       set(newSlug) {
-        this.slug = newSlug
+        this.summarySheet.slug = newSlug
       }
     },
 
     summarySheetPath: {
       get() {
         if (this.summarySheetId === null) {
-          return ''
+          return this.summarySheet.path
         } else {
           return this.summarySheetById(this.summarySheetId).path
         }
@@ -180,6 +187,8 @@ export default {
             value: newPath,
             id: this.summarySheetId
           })
+        } else {
+          this.summarySheet.path = newPath
         }
       }
     },
@@ -187,7 +196,7 @@ export default {
     summarySheetThemeId: {
       get() {
         if (this.summarySheetId === null) {
-          return ''
+          return this.summarySheet.themeId
         } else {
           return this.summarySheetById(this.summarySheetId).themeId
         }
@@ -199,6 +208,8 @@ export default {
             value: newThemeId,
             id: this.summarySheetId
           })
+        } else {
+          this.summarySheet.themeId = newThemeId
         }
       }
     }
