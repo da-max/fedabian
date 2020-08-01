@@ -41,6 +41,9 @@ exports.router = (() => {
   apiRouter
     .route('/mathematics/summary-sheets/:summarySheetSlug')
     .put(authMiddleware, mathematicsControlers.summarySheetUpdate)
+  apiRouter
+    .route('/mathematics/summary-sheets/:summarySheetSlug')
+    .delete(authMiddleware, mathematicsControlers.summarySheetDelete)
 
   // Send mail routes
   apiRouter.route('/send-mail').post(contactControlers.sendMail)

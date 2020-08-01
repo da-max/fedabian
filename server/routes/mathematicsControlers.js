@@ -1,4 +1,5 @@
 const models = require('../models')
+const { mode } = require('~/nuxt.config')
 
 module.exports = {
   async summarySheetsList(_req, res) {
@@ -126,6 +127,23 @@ module.exports = {
       }
     } catch (error) {
       return res.status(500).json({ error: 'cannot update summary sheet.' })
+    }
+  },
+
+  async summarySheetDelete(req, res) {
+    const slug = req.params.summarySheetSlug
+
+    try {
+      const summarySheetDelete = await models.SummarySheet.destroy({
+        where: { slug }
+      })
+      if (summarySheetDelete) {
+        return res.status(201).json({ status: 'summary sheet delete.' })
+      } else {
+        return res.status(403).json({ error: 'summary sheet not found.' })
+      }
+    } catch {
+      return res.status(500).json({ error: 'cannot delete summary sheet.' })
     }
   }
 }
