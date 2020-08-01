@@ -4,10 +4,10 @@
     Erreur lors du chargement de la fiche :
     {{ $fetchState.error.message }}
   </p>
-  <div v-else>
+  <main v-else>
     <!-- eslint-disable-next-line vue/no-v-html -->
     <article v-html="$md.render(content)"></article>
-  </div>
+  </main>
 </template>
 
 <script>
@@ -16,7 +16,7 @@ export default {
   name: 'MathematicsSummarySheet',
   async fetch() {
     this.content = await this.$mathematicsApi.$get(
-      `${this.summarySheet.path}/raw?ref=master`
+      `${encodeURIComponent(this.summarySheet.path)}/raw?ref=master`
     )
   },
 

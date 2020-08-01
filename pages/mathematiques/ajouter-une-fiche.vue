@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <main>
     <header class="uk-margin-large-bottom uk-text-center">
       <h1>Ajouter une fiche de révision</h1>
     </header>
     <summary-sheet-form></summary-sheet-form>
-  </div>
+  </main>
 </template>
 
 <script>

@@ -1,9 +1,14 @@
 <template>
-  <div>
+  <main>
+    <header>
+      <h1 class="uk-text-center">
+        Modifier la fiche : {{ summarySheet.name.toLowerCase() }}
+      </h1>
+    </header>
     <summary-sheet-form
       :summary-sheet-id="summarySheet.id"
     ></summary-sheet-form>
-  </div>
+  </main>
 </template>
 
 <script>

@@ -1,12 +1,13 @@
 <template>
-  <section class="uk-margin-large-top uk-margin-large-bottom">
-    <article
+  <main class="uk-margin-large-top uk-margin-large-bottom">
+    <section
       class="uk-tile uk-tile-default uk-light uk-container uk-border-rounded uk-margin-auto"
       uk-scrollspy="taget: > div > *; cls: uk-animation-fade; delay: 500"
     >
-      <div v-html="$md.render(content)"></div>
-    </article>
-  </section>
+      <!-- eslint-disable-next-line vue/no-v-html -->
+      <article v-html="$md.render(content)"></article>
+    </section>
+  </main>
 </template>
 
 <script>
