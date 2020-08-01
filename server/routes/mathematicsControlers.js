@@ -1,5 +1,4 @@
 const models = require('../models')
-const { mode } = require('~/nuxt.config')
 
 module.exports = {
   async summarySheetsList(_req, res) {
