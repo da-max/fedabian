@@ -24,6 +24,12 @@ export const mutations = {
 
   ADD_SUMMARY_SHEETS(state, summarySheets) {
     state.summarySheets.push(summarySheets)
+  },
+
+  DELETE_SUMMARY_SHEET(state, summarySheetDelete) {
+    state.summarySheets = state.summarySheets.filter(
+      (summarySheet) => summarySheet.id !== summarySheetDelete.id
+    )
   }
 }
 
@@ -60,8 +66,27 @@ export const actions = {
       'alerts/ADD_ALERTS',
       {
         header: true,
-        headerContent: 'Fiche mise  jour',
+        headerContent: 'Fiche mise jour',
         body: 'La fiche de mathématiques a bien été mise à jour.',
+        status: 'success',
+        close: true
+      },
+      { root: true }
+    )
+  },
+
+  async deleteSummarySheet({ commit }, summarySheetSlug) {
+    const response = await this.$axios.$delete(
+      `/mathematics/summary-sheets/${summarySheetSlug}`
+    )
+    console.log(response)
+    commit('DELETE_SUMMARY_SHEET', response)
+    commit(
+      'alerts/ADD_ALERTS',
+      {
+        header: true,
+        headerContent: 'Fiche supprimée',
+        body: 'La fiche de mathématiques a bien été supprimée.',
         status: 'success',
         close: true
       },
