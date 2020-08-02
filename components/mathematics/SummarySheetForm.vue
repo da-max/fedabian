@@ -239,13 +239,13 @@ export default {
       }
       if (this.summarySheetId === null) {
         await this.addSummarySheet(summarySheet)
+        this.summarySheetName = ''
+        this.summarySheetSlug = ''
+        this.summarySheetPath = ''
+        this.summarySheetThemeId = ''
       } else {
         await this.updateSummarySheet(summarySheet)
       }
-      this.summarySheetName = ''
-      this.summarySheetSlug = ''
-      this.summarySheetPath = ''
-      this.summarySheetThemeId = ''
     }
   }
 }
