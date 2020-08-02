@@ -16,54 +16,68 @@
         </ul>
       </li>
       <li v-if="$store.state.auth.loggedIn" class="uk-nav-divider"></li>
-      <li v-if="$store.state.auth.loggedIn && $route.params.summarySheetSlug">
-        <nuxt-link
-          :to="
-            `/mathematiques/${$route.params.themeSlug}/${$route.params.summarySheetSlug}/modifier`
-          "
-          >Modifier cette fiche</nuxt-link
-        >
-      </li>
-      <li v-if="$store.state.auth.loggedIn && $route.params.summarySheetSlug">
-        <a uk-toggle="target: #delete-summary-sheet" type="button">
-          Supprimer cette fiche
-        </a>
-        <modal id="delete-summary-sheet" class="uk-light">
-          <template #header>
-            <h3>
-              Supprimer la fiche «
-              {{ summarySheetCurrent.name.toLowerCase() }} »
-            </h3>
-          </template>
-          <template #body>
-            <p>
-              Vous êtes sur le point de supprimer la fiche «
-              {{ summarySheetCurrent.name.toLowerCase() }} ».
-              <span class="uk-text-warning"
-                >Attention, cette action est irréversible !</span
-              >
-            </p>
-          </template>
-          <template #footer>
-            <button
-              class="uk-button uk-button-danger uk-margin-medium-right"
-              @click.prevent="deleteCurrentSummarySheet()"
-            >
-              Supprimer cette fiche
-            </button>
-            <button
-              class="uk-button uk-button-default uk-modal-close"
-              type="button"
-            >
-              Annuler
-            </button>
-          </template>
-        </modal>
-      </li>
       <li v-if="$store.state.auth.loggedIn">
-        <nuxt-link to="/mathematiques/ajouter-une-fiche"
-          >Ajouter une fiche de révision</nuxt-link
-        >
+        <div class="uk-flex uk-flex-around uk-margin-small-top">
+          <nuxt-link
+            v-if="$route.params.summarySheetSlug"
+            :to="
+              `/mathematiques/${$route.params.themeSlug}/${$route.params.summarySheetSlug}/modifier`
+            "
+            class="uk-icon-link"
+            title="Modifier cette fiche"
+            uk-icon="icon: pencil; ratio: 1.25"
+          ></nuxt-link>
+          <a
+            v-if="$route.params.summarySheetSlug"
+            uk-toggle="target: #delete-summary-sheet"
+            type="button"
+            class="uk-icon-link"
+            title="Supprimer cette fiche"
+            uk-icon="icon: trash; ratio: 1.25"
+          >
+          </a>
+          <nuxt-link
+            to="/mathematiques/ajouter-une-fiche"
+            class="uk-icon-link"
+            title="Ajouter une fiche"
+            uk-icon="icon: plus; ratio: 1.25"
+          ></nuxt-link>
+          <modal
+            v-if="$route.params.summarySheetSlug"
+            id="delete-summary-sheet"
+            class="uk-light"
+          >
+            <template #header>
+              <h3>
+                Supprimer la fiche «
+                {{ summarySheetCurrent.name.toLowerCase() }} »
+              </h3>
+            </template>
+            <template #body>
+              <p>
+                Vous êtes sur le point de supprimer la fiche «
+                {{ summarySheetCurrent.name.toLowerCase() }} ».
+                <span class="uk-text-warning"
+                  >Attention, cette action est irréversible !</span
+                >
+              </p>
+            </template>
+            <template #footer>
+              <button
+                class="uk-button uk-button-danger uk-margin-medium-right"
+                @click.prevent="deleteCurrentSummarySheet()"
+              >
+                Supprimer cette fiche
+              </button>
+              <button
+                class="uk-button uk-button-default uk-modal-close"
+                type="button"
+              >
+                Annuler
+              </button>
+            </template>
+          </modal>
+        </div>
       </li>
     </ul>
   </nav>
