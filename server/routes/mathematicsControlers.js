@@ -66,7 +66,7 @@ module.exports = {
       })
       if (themeDelete) {
         await themeDelete.destroy()
-        return res.status(201).json({ message: 'theme delete.' })
+        return res.status(201).json(themeDelete)
       } else {
         return res.status(401).json({ error: 'cannot found theme.' })
       }
