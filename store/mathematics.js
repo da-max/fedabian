@@ -12,6 +12,14 @@ export const mutations = {
     state.themes.push(themes)
   },
 
+  CHANGE_THEME_ELEMENT(state, theme) {
+    state.themes.find((t) => t.id === theme.id)[theme.element] = theme.value
+  },
+
+  DELETE_THEME(state, theme) {
+    state.themes = state.themes.filter((t) => t.id !== theme.id)
+  },
+
   SET_SUMMARY_SHEETS(state, summarySheets) {
     state.summarySheets = summarySheets
   },
@@ -47,6 +55,39 @@ export const actions = {
   async addTheme({ commit }, theme) {
     const response = await this.$axios.$post('/mathematics/themes', theme)
     commit('ADD_THEMES', response)
+  },
+
+  async updateTheme({ commit }, theme) {
+    await this.$axios.$put(`/mathematics/themes/${theme.slug}`, theme)
+    commit(
+      'alerts/ADD_ALERTS',
+      {
+        header: true,
+        headerContent: 'Thème mis à jour',
+        body: 'Le thème de mathématiques a bien été mise à jour.',
+        status: 'success',
+        close: true
+      },
+      { root: true }
+    )
+  },
+
+  async deleteTheme({ commit }, themeSlug) {
+    const response = await this.$axios.$delete(
+      `/mathematics/themes/${themeSlug}`
+    )
+    commit('DELETE_THEME', response)
+    commit(
+      'alerts/ADD_ALERTS',
+      {
+        header: true,
+        headerContent: 'Thème supprimé.',
+        body: 'Le thème de mathématiques a bien été supprimé.',
+        status: 'success',
+        close: true
+      },
+      { root: true }
+    )
   },
 
   async addSummarySheet({ commit }, summarySheet) {
@@ -115,5 +156,6 @@ export const getters = {
   summarySheetBySlug: (state) => (slug) =>
     state.summarySheets.find((summarySheet) => summarySheet.slug === slug),
   summarySheetById: (state) => (id) =>
-    state.summarySheets.find((summarySheet) => summarySheet.id === id)
+    state.summarySheets.find((summarySheet) => summarySheet.id === id),
+  themeById: (state) => (id) => state.themes.find((theme) => theme.id === id)
 }

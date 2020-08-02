@@ -30,20 +30,36 @@
         <label for="theme" class="uk-form-label">Thème de la fiche</label>
         <div class="uk-form-controls">
           <select v-model="summarySheetThemeId" name="theme" class="uk-select">
-            <option value="null" selected>Sélectionner le thème</option>
+            <option value="-1" selected>Sélectionner le thème</option>
             <option v-for="t in themes" :key="t.id" :value="t.id"
               >{{ t.name }}
             </option>
           </select>
         </div>
-        <div class="uk-margin-medium-top">
+        <div class="uk-flex uk-flex-around uk-margin-small-top">
           <button
-            class="uk-button uk-button-text"
-            uk-toggle="target: #add-theme"
+            v-show="summarySheetThemeId >= 0"
+            class="uk-icon-link"
+            uk-icon="icon: pencil; ratio: 1.25"
+            uk-toggle="target: #update-theme"
             type="button"
-          >
-            Ajouter un thème
-          </button>
+            title="Ajouter un thème."
+          ></button>
+          <button
+            v-show="summarySheetThemeId >= 0"
+            class="uk-icon-link"
+            uk-toggle="target: #delete-theme"
+            uk-icon="icon: trash; ratio: 1.25"
+            type="button"
+            title="Supprimer ce thème."
+          ></button>
+          <button
+            class="uk-icon-link"
+            uk-toggle="target: #add-theme"
+            uk-icon="icon: plus; ratio: 1.25"
+            type="button"
+            title="Ajouter un thème."
+          ></button>
         </div>
       </div>
     </div>
@@ -90,6 +106,79 @@
         </button>
       </template>
     </modal>
+
+    <modal
+      v-show="summarySheetThemeId >= 0"
+      id="update-theme"
+      class="uk-light"
+      :bg-close="false"
+    >
+      <template #header>
+        <h3>Modifier le thème : {{ themeName }}</h3>
+      </template>
+      <template #body>
+        <div>
+          <input-form
+            v-model="themeName"
+            name="name"
+            type="text"
+            label="Nom du thème"
+            class="uk-margin-medium-bottom"
+          ></input-form>
+        </div>
+      </template>
+      <template #footer>
+        <button
+          type="button"
+          class="uk-button uk-button-primary uk-margin-medium-right"
+          @click.prevent="saveTheme(true)"
+        >
+          Modifier ce thème
+        </button>
+        <button
+          class="uk-button uk-button-default uk-modal-close"
+          type="button"
+        >
+          Annuler
+        </button>
+      </template>
+    </modal>
+    <modal
+      v-show="summarySheetThemeId >= 0"
+      id="delete-theme"
+      class="uk-light"
+      :bg-close="false"
+    >
+      <template #header>
+        <h3>Supprimer le thème : {{ themeName }}</h3>
+      </template>
+      <template #body>
+        <div>
+          <p>
+            Vous êtes sur le point de supprimer un thème de mathématiques,
+            <span class="uk-text-warning"
+              >attention, cette action est irréversible, voulez-vous continuer
+              ?</span
+            >
+          </p>
+        </div>
+      </template>
+      <template #footer>
+        <button
+          type="button"
+          class="uk-button uk-button-danger uk-margin-medium-right"
+          @click.prevent="deleteCurrentTheme()"
+        >
+          Supprimer ce thème
+        </button>
+        <button
+          class="uk-button uk-button-default uk-modal-close"
+          type="button"
+        >
+          Annuler
+        </button>
+      </template>
+    </modal>
   </form>
 </template>
 
@@ -124,7 +213,7 @@ export default {
         slug: '',
         name: '',
         path: '',
-        themeId: ''
+        themeId: -1
       },
       theme: {
         name: '',
@@ -136,7 +225,8 @@ export default {
   computed: {
     ...mapGetters({
       themes: 'mathematics/themes',
-      summarySheetById: 'mathematics/summarySheetById'
+      summarySheetById: 'mathematics/summarySheetById',
+      themeById: 'mathematics/themeById'
     }),
     summarySheetName: {
       get() {
@@ -212,22 +302,61 @@ export default {
           this.summarySheet.themeId = newThemeId
         }
       }
+    },
+
+    themeName: {
+      get() {
+        if (this.summarySheetThemeId >= 0) {
+          return this.themeById(this.summarySheetThemeId).name
+        } else {
+          return this.theme.name
+        }
+      },
+      set(newName) {
+        this.changeThemeElement({
+          element: 'name',
+          value: newName,
+          id: this.summarySheetThemeId
+        })
+      }
+    },
+    themeSlug: {
+      get() {
+        if (this.summarySheetThemeId >= 0) {
+          return this.themeById(this.summarySheetThemeId).slug
+        } else {
+          return this.theme.slug
+        }
+      }
     }
   },
 
   methods: {
     ...mapActions({
       addTheme: 'mathematics/addTheme',
+      updateTheme: 'mathematics/updateTheme',
+      deleteTheme: 'mathematics/deleteTheme',
       addSummarySheet: 'mathematics/addSummarySheet',
       updateSummarySheet: 'mathematics/updateSummarySheet'
     }),
 
     ...mapMutations({
-      changeSummarySheetElement: 'mathematics/CHANGE_SUMMARY_SHEET_ELEMENT'
+      changeSummarySheetElement: 'mathematics/CHANGE_SUMMARY_SHEET_ELEMENT',
+      changeThemeElement: 'mathematics/CHANGE_THEME_ELEMENT'
     }),
 
-    async saveTheme() {
-      await this.addTheme(this.theme)
+    async saveTheme(updated = false) {
+      if (updated) {
+        this.$uikit.modal('#update-theme').hide()
+        await this.updateTheme({
+          id: this.summarySheetThemeId,
+          name: this.themeName,
+          slug: this.themeSlug
+        })
+      } else {
+        this.$uikit.modal('#add-theme').hide()
+        await this.addTheme(this.theme)
+      }
     },
 
     async saveSummarySheet() {
@@ -246,6 +375,12 @@ export default {
       } else {
         await this.updateSummarySheet(summarySheet)
       }
+    },
+    async deleteCurrentTheme() {
+      await this.$uikit.modal('#delete-theme').hide()
+      this.$router.push('/')
+
+      this.deleteTheme(this.themeSlug)
     }
   }
 }
