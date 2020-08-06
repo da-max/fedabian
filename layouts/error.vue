@@ -1,47 +1,34 @@
 <template>
-  <div
-    class="uk-margin-large-top uk-width-2-5@l uk-width-2-3@m uk-margin-auto"
-    uk-height-viewport="offset-top: true; offset-bottom:true"
-  >
-    <alert
-      v-if="error.statusCode === 404"
-      :close="false"
-      status="warning"
-      :header="true"
-    >
-      <template #header>
-        Page non trouvée
-      </template>
-      <template #body>
-        La page demandée n’a pas été trouvée, vous pouvez cliquer
-        <nuxt-link to="/">ici</nuxt-link> afin de retourner à l’accueil.
-      </template>
-    </alert>
-    <alert
-      v-if="error.statusCode === 500"
-      :close="false"
-      status="danger"
-      :header="true"
-    >
-      <template #header>
-        Erreur interne
-      </template>
-      <template #body>
-        <span class="uk-text-bold">Une erreur est survenue</span>, merci de
-        réessayer ultérieurement ou de me contacter à l’adresse :
-        <span class="uk-text-bold">maxime.benhassen@tutanota.com</span>
-      </template>
-    </alert>
-  </div>
+  <div></div>
 </template>
 
 <script>
-import Alert from '~/components/utility/Alert'
+import { mapMutations } from 'vuex'
 export default {
-  components: {
-    Alert
+  props: ['error'],
+
+  mounted() {
+    if (this.error.statusCode === 404) {
+      this.add404()
+    } else if (this.error.statusCode === 400) {
+      this.add400()
+    } else if (this.error.statusCode === 500) {
+      this.add500()
+    } else if (this.error.statusCode === 503) {
+      this.add503()
+    } else {
+      this.addUnknown()
+    }
   },
 
-  props: ['error']
+  methods: {
+    ...mapMutations({
+      add404: 'alerts/ADD_404',
+      add400: 'alerts/ADD_400',
+      add500: 'alerts/ADD_500',
+      add503: 'alerts/ADD_503',
+      addUnknown: 'alerts/ADD_UNKNOWN'
+    })
+  }
 }
 </script>
