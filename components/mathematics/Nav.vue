@@ -15,8 +15,8 @@
           </li>
         </ul>
       </li>
-      <li v-if="$store.state.auth.loggedIn" class="uk-nav-divider"></li>
-      <li v-if="$store.state.auth.loggedIn">
+      <li v-show="$store.state.auth.loggedIn" class="uk-nav-divider"></li>
+      <li v-show="$store.state.auth.loggedIn">
         <div class="uk-flex uk-flex-around uk-margin-small-top">
           <nuxt-link
             v-if="$route.params.summarySheetSlug"
@@ -87,7 +87,7 @@
 import { mapGetters, mapActions } from 'vuex'
 import Modal from '../utility/Modal'
 export default {
-  name: 'MathmeticsNav',
+  name: 'MathematicsNav',
 
   components: { Modal },
 
