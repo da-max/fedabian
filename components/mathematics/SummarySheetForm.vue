@@ -371,7 +371,7 @@ export default {
         this.summarySheetName = ''
         this.summarySheetSlug = ''
         this.summarySheetPath = ''
-        this.summarySheetThemeId = ''
+        this.summarySheetThemeId = -1
       } else {
         await this.updateSummarySheet(summarySheet)
       }
