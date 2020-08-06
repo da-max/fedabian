@@ -12,8 +12,10 @@
       </p>
       <div v-else uk-grid>
         <div class="uk-width-1-4@m">
-          <mathematics-nav uk-sticky="media: @m; offset: 100">
-          </mathematics-nav>
+          <client-only>
+            <mathematics-nav uk-sticky="media: @m; offset: 100">
+            </mathematics-nav>
+          </client-only>
         </div>
         <section class="uk-width-expand">
           <nuxt-child></nuxt-child>
