@@ -2,7 +2,7 @@ export default ({ $axios, error }, inject) => {
   const mathematicsApi = $axios.create({
     headers: {
       common: {
-        Authorization: ''
+        'PRIVATE-TOKEN': process.env.MATHEMATICS_GITLAB_TOKEN
       }
     }
   })
