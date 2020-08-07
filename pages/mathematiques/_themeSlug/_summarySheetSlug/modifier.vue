@@ -1,24 +1,24 @@
 <template>
   <main>
-    <header>
+    <header class="uk-margin-large-bottom">
       <h1 class="uk-text-center">
         Modifier la fiche : {{ summarySheet.name.toLowerCase() }}
       </h1>
     </header>
-    <summary-sheet-form
-      :summary-sheet-id="summarySheet.id"
-    ></summary-sheet-form>
+
+    <mathematics-form :summary-sheet-id="summarySheet.id"></mathematics-form>
   </main>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
-import SummarySheetForm from '~/components/mathematics/SummarySheetForm'
+import MathematicsForm from '~/components/mathematics/form/Form'
 
 export default {
   name: 'UpdateSummarySheet',
   middleware: ['auth'],
-  components: { SummarySheetForm },
+  components: { MathematicsForm },
+
   computed: {
     ...mapGetters({ summarySheetBySlug: 'mathematics/summarySheetBySlug' }),
     summarySheet() {

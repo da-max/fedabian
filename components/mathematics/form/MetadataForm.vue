@@ -189,7 +189,7 @@ import InputForm from '~/components/utility/form/Input'
 import Modal from '~/components/utility/Modal'
 
 export default {
-  name: 'SummarySheetForm',
+  name: 'MetadataForm',
   components: {
     InputForm,
     Modal
