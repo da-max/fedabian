@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 module.exports = {
   mode: 'universal',
   /*
@@ -42,7 +44,8 @@ module.exports = {
   buildModules: [
     '@nuxtjs/fontawesome',
     // Doc: https://github.com/nuxt-community/eslint-module
-    '@nuxtjs/eslint-module'
+    '@nuxtjs/eslint-module',
+    '@nuxtjs/dotenv'
   ],
   /*
    ** Nuxt.js modules
