@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken')
 
-const JWT_SIGN_SECRET = 'process.env.JWT_SIGN_SECRETIDontNowWhyICanGetj'
+const JWT_SIGN_SECRET = process.env.JWT_SIGN_SECRET
 
 module.exports = {
   generateTokenForUser: (userData) => {
