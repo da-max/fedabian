@@ -4,7 +4,7 @@
     Erreur lors du chargement de la fiche :
     {{ $fetchState.error.message }}
   </p>
-  <form v-else action="#" @submit.prevent="">
+  <form v-else action="#" @submit.prevent="saveSummarySheet()">
     <fieldset
       class="uk-fieldset uk-grid-medium uk-flex-center uk-child-width-1-2@m uk-margin-large-bottom"
       uk-grid
@@ -133,6 +133,29 @@ export default {
       set(newName) {
         this.user.name = newName
       }
+    }
+  },
+
+  methods: {
+    async saveSummarySheet() {
+      await console.log(`{
+        branch: 'master',
+        author_email: ${this.user.email},
+        author_name: ${this.user.name},
+        content: ${this.content},
+        commit: ${this.commit}
+      }`)
+      const response = await this.$mathematicsApi.$put(
+        `${encodeURIComponent(this.summarySheet.path)}`,
+        {
+          branch: 'master',
+          author_email: this.user.email,
+          author_name: this.user.name,
+          content: this.content,
+          commit_message: this.commit
+        }
+      )
+      console.log(response)
     }
   }
 }
