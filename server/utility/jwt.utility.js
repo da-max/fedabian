@@ -17,7 +17,9 @@ module.exports = {
   },
 
   parseAuthorization(authorization) {
-    return authorization !== null ? authorization.replace('Bearer ', '') : null
+    return authorization !== null && authorization !== undefined
+      ? authorization.replace('Bearer ', '')
+      : null
   },
 
   getUserId(authorization) {

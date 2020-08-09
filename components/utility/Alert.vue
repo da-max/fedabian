@@ -6,7 +6,12 @@
         status
     "
   >
-    <a v-show="close" class="uk-alert-close" uk-close></a>
+    <a
+      v-show="close"
+      class="uk-alert-close"
+      uk-close
+      @click="deleteAlert(alertId)"
+    ></a>
     <div v-show="header">
       <h2 :class="'uk-text-center uk-text-' + status">
         <slot name="header"></slot>
@@ -26,6 +31,8 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
+
 export default {
   name: 'Alert',
 
@@ -33,6 +40,10 @@ export default {
     status: {
       default: 'primary',
       type: String
+    },
+    alertId: {
+      type: Number,
+      required: true
     },
     close: {
       default: true,
@@ -42,6 +53,10 @@ export default {
       default: false,
       type: Boolean
     }
+  },
+
+  methods: {
+    ...mapMutations({ deleteAlert: 'alerts/DELETE_ALERT' })
   }
 }
 </script>

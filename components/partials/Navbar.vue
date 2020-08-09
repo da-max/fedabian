@@ -10,6 +10,9 @@
             <li class="uk-parent">
               <nuxt-link to="/mes-projets">Mes projets</nuxt-link>
             </li>
+            <li class="uk-parent">
+              <nuxt-link to="/mathematiques">Mathématiques</nuxt-link>
+            </li>
           </ul>
         </div>
         <nuxt-link id="navbar-logo" to="/" class="uk-navbar-item uk-logo"
@@ -72,6 +75,9 @@
           </li>
           <li>
             <nuxt-link to="/mes-projets">Mes projets</nuxt-link>
+          </li>
+          <li>
+            <nuxt-link to="/mathematiques">Mathématiques</nuxt-link>
           </li>
           <li>
             <nuxt-link to="/me-contacter">Me contacter</nuxt-link>

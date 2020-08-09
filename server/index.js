@@ -2,11 +2,12 @@ const express = require('express')
 const consola = require('consola')
 const { Nuxt, Builder } = require('nuxt')
 const bodyParser = require('body-parser')
-const apiRouter = require('./apiRouter').router
 const app = express()
 
 // Import and Set Nuxt.js options
 const config = require('../nuxt.config.js')
+const apiRouter = require('./apiRouter').router
+
 config.dev = process.env.NODE_ENV !== 'production'
 
 app.use(bodyParser.urlencoded({ extended: true }))

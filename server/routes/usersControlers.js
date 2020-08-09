@@ -155,7 +155,7 @@ module.exports = {
     const userId = jwtUtils.getUserId(headerAuth)
 
     if (userId < 0) {
-      return res.status(401).json({ error: 'wrong token' })
+      return res.status(201).json({ error: 'wrong token' })
     }
 
     models.User.findOne({

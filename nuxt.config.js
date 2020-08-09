@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 module.exports = {
   mode: 'universal',
   /*
@@ -28,14 +30,16 @@ module.exports = {
    */
   css: [
     '@/assets/scss/main.scss',
-    '@fortawesome/fontawesome-svg-core/styles.css'
+    '@fortawesome/fontawesome-svg-core/styles.css',
+    'katex/dist/katex.min.css'
   ],
   /*
    ** Plugins to load before mounting the App
    */
   plugins: [
     { src: '~/plugins/uikit', mode: 'client' },
-    { src: '~/plugins/rich-editor', mode: 'client' }
+    { src: '~/plugins/rich-editor', mode: 'client' },
+    { src: '~/plugins/axios' }
   ],
   /*
    ** Nuxt.js dev-modules
@@ -43,7 +47,8 @@ module.exports = {
   buildModules: [
     '@nuxtjs/fontawesome',
     // Doc: https://github.com/nuxt-community/eslint-module
-    '@nuxtjs/eslint-module'
+    '@nuxtjs/eslint-module',
+    '@nuxtjs/dotenv'
   ],
   /*
    ** Nuxt.js modules
@@ -55,6 +60,7 @@ module.exports = {
     '@nuxtjs/pwa',
     '@nuxtjs/proxy',
     'nuxt-leaflet'
+    '@nuxtjs/markdownit'
   ],
   /*
    ** Axios module configuration
@@ -111,12 +117,32 @@ module.exports = {
     }
   },
   /*
+   ** Markdownit options
+   ** See https://github.com/markdown-it/markdown-it
+   */
+  markdownit: {
+    injected: true,
+    html: true,
+    typography: true,
+    // preset: 'default',
+    // linkify: true,
+    // breaks: true,
+    use: ['@abreto/markdown-it-katex', '@hackmd/markdown-it-imsize']
+  },
+  /*
+   ** NuxtJs telemetry
+   ** See https://github.com/nuxt/telemetry
+   */
+  telemetry: false,
+  /*
    ** Build configuration
    */
   build: {
     /*
      ** You can extend webpack config here
      */
-    extend(config, ctx) {}
+    extend(config, ctx) {
+      config.node = { fs: 'empty' }
+    }
   }
 }
