@@ -59,7 +59,7 @@ module.exports = {
     '@nuxtjs/auth',
     '@nuxtjs/pwa',
     '@nuxtjs/proxy',
-    'nuxt-leaflet'
+    'nuxt-leaflet',
     '@nuxtjs/markdownit'
   ],
   /*
