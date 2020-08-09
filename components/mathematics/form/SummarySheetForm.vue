@@ -38,49 +38,49 @@
         ></input-form>
       </div>
     </fieldset>
-    <ul class="uk-child-width-expand uk-text-center" uk-tab>
-      <li>
-        <a href="#" type="button">Éditeur markdown</a>
-      </li>
-      <li>
-        <a href="#" type="button">Rendu</a>
-      </li>
-    </ul>
-    <ul class="uk-switcher">
-      <li>
-        <textarea
-          v-model="content"
-          name="content"
-          class="uk-textarea uk-width-1-1"
-          rows="40"
-        ></textarea>
-      </li>
-      <li>
-        <p class="uk-text-warning">
-          Attention, ceci n’est qu’un aperçu vos changements seront perdus si
-          vous ne cliquez pas sur le bouton enregistrer.
-        </p>
-        <div v-html="$md.render(content)"></div>
-      </li>
-    </ul>
     <div class="uk-text-center uk-margin-medium-top">
+      <button
+        type="button"
+        class="uk-button uk-button-default uk-margin-medium-right"
+        uk-toggle="target: #markdown-editor"
+      >
+        Afficher l’éditeur markdown
+      </button>
       <input
         type="submit"
         value="Enregistrer"
         class="uk-button uk-button-primary"
       />
     </div>
+    <modal id="markdown-editor" class="uk-light" :full="true">
+      <template #header><h3>Éditeur markdown</h3></template>
+      <template #body>
+        <div uk-grid class="uk-child-width-1-2">
+          <div>
+            <textarea
+              id="textarea-content"
+              v-model="textareaContent"
+              name="content"
+              class="uk-textarea"
+              @focus="textareaAutoGrow()"
+            ></textarea>
+          </div>
+          <div v-html="$md.render(content)"></div>
+        </div>
+      </template>
+    </modal>
   </form>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
 import InputForm from '~/components/utility/form/Input'
+import Modal from '~/components/utility/Modal'
 
 export default {
   name: 'SummarySheetForm',
 
-  components: { InputForm },
+  components: { InputForm, Modal },
 
   props: {
     summarySheetId: {
@@ -133,18 +133,22 @@ export default {
       set(newName) {
         this.user.name = newName
       }
+    },
+
+    textareaContent: {
+      get() {
+        return this.content
+      },
+
+      set(newContent) {
+        this.textareaAutoGrow()
+        this.content = newContent
+      }
     }
   },
 
   methods: {
     async saveSummarySheet() {
-      await console.log(`{
-        branch: 'master',
-        author_email: ${this.user.email},
-        author_name: ${this.user.name},
-        content: ${this.content},
-        commit: ${this.commit}
-      }`)
       const response = await this.$mathematicsApi.$put(
         `${encodeURIComponent(this.summarySheet.path)}`,
         {
@@ -156,6 +160,13 @@ export default {
         }
       )
       console.log(response)
+    },
+
+    textareaAutoGrow() {
+      const textareaContent = document.getElementById('textarea-content')
+      textareaContent.style.height = 'auto'
+      textareaContent.style.overflow = 'hidden'
+      textareaContent.style.height = textareaContent.scrollHeight + 'px'
     }
   }
 }
