@@ -16,7 +16,7 @@
           </ul>
         </div>
         <nuxt-link id="navbar-logo" to="/" class="uk-navbar-item uk-logo"
-          >Da-max</nuxt-link
+          >Fedabian</nuxt-link
         >
         <div class="uk-navbar-center-right">
           <ul class="uk-navbar-nav">
@@ -54,7 +54,7 @@
           id="navbar-logo"
           to="/"
           class="uk-navbar-item uk-logo uk-margin-left"
-          >Da-max</nuxt-link
+          >Fedabian</nuxt-link
         >
       </div>
       <div class="uk-navbar-right uk-margin-right">
