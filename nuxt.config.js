@@ -29,7 +29,6 @@ module.exports = {
    ** Global CSS
    */
   css: [
-    '@/assets/scss/main.scss',
     '@fortawesome/fontawesome-svg-core/styles.css',
     'katex/dist/katex.min.css'
   ],
@@ -48,7 +47,8 @@ module.exports = {
     '@nuxtjs/fontawesome',
     // Doc: https://github.com/nuxt-community/eslint-module
     '@nuxtjs/eslint-module',
-    '@nuxtjs/dotenv'
+    '@nuxtjs/dotenv',
+    '@nuxtjs/style-resources'
   ],
   /*
    ** Nuxt.js modules
@@ -128,6 +128,13 @@ module.exports = {
     // linkify: true,
     // breaks: true,
     use: ['@abreto/markdown-it-katex', '@hackmd/markdown-it-imsize']
+  },
+  /*
+   ** StyleResources Module
+   ** See https://github.com/nuxt-community/style-resources-module
+   */
+  styleResources: {
+    scss: '@/assets/scss/main.scss'
   },
   /*
    ** NuxtJs telemetry
