@@ -1,51 +1,8 @@
-@font-face {
-  font-family: "Roboto";
-  src: url("~static/fonts/Roboto/Roboto-Bold.ttf") format("TrueType");
-  font-weight: bold;
-}
+@import "./variables.scss";
 
-@font-face {
-  font-family: "Roboto";
-  src: url("~static/fonts/Roboto/Roboto-Regular.ttf") format("TrueType");
-  font-weight: normal;
-}
-
-@font-face {
-  font-family: "Pacifico";
-  src: url("~static/fonts/Pacifico/Pacifico-Regular.ttf") format("TrueType");
-  font-weight: normal;
-}
-
-// 1. Your custom variables and variable overwrites.
-$global-font-family: Roboto, sans-serif;
-$global-background: #1a202c;
-$global-primary-background: #ed8936;
-$global-secondary-background: #fffaf0;
-$offcanvas-bar-background: $global-background;
-$global-success-background: #48bb78;
-$alert-success-background: lighten(
-  mix(white, $global-success-background, 45%),
-  25%
-);
-$global-color: #1a202c;
-$global-inverse-color: #fffaf0;
-$inverse-global-primary-background: $global-primary-background;
-
-$navbar-background: $global-background;
-$navbar-nav-item-font-size: 16pts;
-$button-primary-background: $global-primary-background;
-$button-primary-color: #1a202c;
-$button-primary-hover-background: darken($button-primary-background, 5%);
-$button-primary-hover-color: darken($button-primary-color, 5%);
-$inverse-button-primary-color: $button-primary-color;
-$inverse-button-primary-hover-color: $button-primary-hover-color;
-$inverse-button-primary-hover-background: $button-primary-hover-background;
-
-// 2. Import default variables and available mixins.
 @import "~uikit/src/scss/variables-theme.scss";
 @import "~uikit/src/scss/mixins-theme.scss";
 
-// 4. Import UIkit.
 @import "~uikit/src/scss/uikit-theme.scss";
 
 @mixin shew-y($deg) {
@@ -71,7 +28,7 @@ $inverse-button-primary-hover-background: $button-primary-hover-background;
   }
 }
 
-@for $deg from 2 to 20 {
+@for $deg from 2 to 10 {
   .skew-y-#{$deg} {
     @include shew-y($deg);
   }
