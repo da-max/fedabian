@@ -5,61 +5,45 @@
       class="uk-child-width-1-2@m uk-grid-large uk-light uk-margin-large-bottom"
     >
       <div>
-        <label for="title" class="uk-form-label">Titre du projet</label>
-        <div class="uk-form-controls">
-          <input
-            v-model="project.title"
-            required
-            placeholder="Titre"
-            type="text"
-            name="title"
-            class="uk-input"
-          />
-        </div>
+        <input-form
+          v-model="project.title"
+          label="Titre du projet"
+          type="text"
+          name="title"
+          :value="project.title"
+        ></input-form>
       </div>
       <div>
-        <label for="repository" class="uk-form-label">Dépôt du projet</label>
-        <div class="uk-form-controls">
-          <input
-            v-model="project.repository"
-            placeholder="dépôt"
-            type="url"
-            name="repository"
-            class="uk-input"
-          />
-        </div>
-        <p class="uk-text-muted">Ce champ est optionnel.</p>
+        <input-form
+          v-model="project.repository"
+          label="Dépôt du projet"
+          type="url"
+          :required="false"
+          name="repository"
+          :value="project.repository"
+        ></input-form>
       </div>
       <div>
-        <label for="demo" class="uk-form-label">Demo du projet</label>
-        <div class="uk-form-controls">
-          <input
-            v-model="project.demo"
-            placeholder="démo"
-            type="url"
-            name="demo"
-            class="uk-input"
-          />
-        </div>
-        <p class="uk-text-muted">Ce champ est optionnel.</p>
+        <input-form
+          v-model="project.demo"
+          label="Démo du projet"
+          type="url"
+          :required="false"
+          name="demo"
+          :value="project.demo"
+        ></input-form>
       </div>
       <div>
-        <label for="imageLink" class="uk-form-label"
-          >Lien vers l’image d’exemple</label
-        >
-        <div class="uk-form-controls">
-          <input
-            v-model="project.imageLink"
-            required
-            placeholder="lien vers l’image"
-            type="url"
-            name="imageLink"
-            class="uk-input"
-          />
-        </div>
+        <input-form
+          v-model="project.imageLink"
+          label="Lien vers l’image du projet"
+          type="url"
+          name="imageLink"
+          :value="project.imageLink"
+        ></input-form>
       </div>
     </div>
-    <label class="uk-form-label uk-light">Description du projet</label>
+    <label class="uk-form-label">Description du projet</label>
     <rich-editor v-model="project.description" />
 
     <div class="uk-margin-medium-top uk-text-center">
@@ -72,8 +56,12 @@
   </form>
 </template>
 <script>
+import InputForm from '~/components/Utils/Form/Input'
+
 export default {
   name: 'AddProjectForm',
+
+  components: { InputForm },
 
   data() {
     return {
