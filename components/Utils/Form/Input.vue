@@ -1,8 +1,13 @@
 <template>
   <div>
-    <label :for="name" class="uk-form-label">{{ label }}</label>
+    <label
+      :for="name"
+      :class="['uk-form-label', { 'required-label': required }]"
+      >{{ label }}</label
+    >
     <div class="uk-form-controls">
       <input
+        :required="required"
         :type="type"
         :name="name"
         class="uk-input"
@@ -11,6 +16,8 @@
         @input="$emit('input', $event.target.value)"
       />
     </div>
+    <p v-if="required" class="uk-text-muted">Ce champ est requis.</p>
+    <p v-else class="uk-text-muted">Ce champ est optionnel.</p>
   </div>
 </template>
 
@@ -20,7 +27,7 @@ export default {
   props: {
     name: {
       type: String,
-      default: 'name',
+      default: 'text',
       required: true
     },
     type: {
@@ -34,7 +41,20 @@ export default {
     value: {
       type: String,
       required: true
+    },
+    required: {
+      type: Boolean,
+      default: true,
+      required: false
     }
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.required-label:after {
+  content: '*';
+  margin-left: 0.4rem;
+  color: $global-danger-background;
+}
+</style>
