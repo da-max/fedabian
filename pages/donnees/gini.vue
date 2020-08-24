@@ -51,9 +51,9 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import GiniNav from '~/components/gini/Nav'
-import GiniSearchBar from '~/components/gini/SearchBar'
-import Alerts from '~/components/utility/Alerts'
+import GiniNav from '~/components/Gini/Nav'
+import GiniSearchBar from '~/components/Gini/SearchBar'
+import Alerts from '~/components/Utils/Alerts'
 
 export default {
   name: 'Gini',

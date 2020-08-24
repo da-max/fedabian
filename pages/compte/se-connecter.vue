@@ -13,9 +13,9 @@
 </template>
 
 <script>
-import Card from '~/components/utility/Card'
-import LoginForm from '~/components/auth/LoginForm'
-import Alerts from '~/components/utility/Alerts'
+import Card from '~/components/Utils/Card'
+import LoginForm from '~/components/Auth/LoginForm'
+import Alerts from '~/components/Utils/Alerts'
 export default {
   name: 'Login',
   components: {

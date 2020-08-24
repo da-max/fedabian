@@ -21,8 +21,8 @@
 </template>
 
 <script>
-import Project from '~/components/portfolio/Project'
-import Alerts from '~/components/utility/Alerts'
+import Project from '~/components/Portfolio/Project'
+import Alerts from '~/components/Utils/Alerts'
 
 export default {
   name: 'Projects',

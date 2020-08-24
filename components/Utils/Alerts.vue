@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import Alert from '~/components/utility/Alert'
+import Alert from '~/components/Utils/Alert'
 export default {
   name: 'Alerts',
 

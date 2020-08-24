@@ -185,8 +185,8 @@
 <script>
 import { mapActions, mapGetters, mapMutations } from 'vuex'
 
-import InputForm from '~/components/utility/form/Input'
-import Modal from '~/components/utility/Modal'
+import InputForm from '~/components/Utils/Form/Input'
+import Modal from '~/components/Utils/Modal'
 
 export default {
   name: 'MetadataForm',

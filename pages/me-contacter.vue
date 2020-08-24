@@ -45,8 +45,8 @@
 </template>
 
 <script>
-import ContactForm from '~/components/portfolio/ContactForm'
-import Alerts from '~/components/utility/Alerts'
+import ContactForm from '~/components/Portfolio/ContactForm'
+import Alerts from '~/components/Utils/Alerts'
 export default {
   name: 'Contact',
   components: {

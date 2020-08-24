@@ -12,7 +12,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import MathematicsForm from '~/components/mathematics/form/Form'
+import MathematicsForm from '~/components/Mathematics/Form/Form'
 
 export default {
   name: 'UpdateSummarySheet',

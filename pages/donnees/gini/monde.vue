@@ -22,8 +22,8 @@
 </template>
 
 <script>
-import GiniMap from '~/components/gini/Map'
-import GiniTable from '~/components/gini/Table'
+import GiniMap from '~/components/Gini/Map'
+import GiniTable from '~/components/Gini/Table'
 
 export default {
   name: 'GiniWorld',

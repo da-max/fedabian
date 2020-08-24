@@ -29,8 +29,8 @@
 </template>
 
 <script>
-import MathematicsNav from '~/components/mathematics/Nav'
-import Totop from '~/components/utility/Totop'
+import MathematicsNav from '~/components/Mathematics/Nav'
+import Totop from '~/components/Utils/Totop'
 
 export default {
   name: 'Mathematics',

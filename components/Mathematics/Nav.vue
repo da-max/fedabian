@@ -85,7 +85,7 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import Modal from '../utility/Modal'
+import Modal from '~/components/Utils/Modal'
 export default {
   name: 'MathematicsNav',
 

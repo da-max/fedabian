@@ -13,7 +13,7 @@
   </div>
 </template>
 <script>
-import AddProjectForm from '~/components/portfolio/AddProjectForm'
+import AddProjectForm from '~/components/Portfolio/AddProjectForm'
 export default {
   name: 'AddProject',
   middleware: ['auth'],

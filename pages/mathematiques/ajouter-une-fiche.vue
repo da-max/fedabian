@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import MathematicsForm from '~/components/mathematics/form/Form'
+import MathematicsForm from '~/components/Mathematics/Form/Form'
 
 export default {
   name: 'AddSummarySheet',

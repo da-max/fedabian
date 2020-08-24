@@ -185,8 +185,8 @@
 </template>
 
 <script>
-import Card from '~/components/utility/Card'
-import CustomFontAwesomeIcon from '~/components/utility/CustomFontAwesomeIcon'
+import Card from '~/components/Utils/Card'
+import CustomFontAwesomeIcon from '~/components/Utils/CustomFontAwesomeIcon'
 export default {
   name: 'About',
   components: {

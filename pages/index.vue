@@ -119,7 +119,7 @@
 </template>
 
 <script>
-import CustomFontAwesomeIcon from '~/components/utility/CustomFontAwesomeIcon'
+import CustomFontAwesomeIcon from '~/components/Utils/CustomFontAwesomeIcon'
 export default {
   name: 'Index',
   components: {

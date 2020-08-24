@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import ChangeProjectForm from '~/components/portfolio/ChangeProjectForm'
+import ChangeProjectForm from '~/components/Portfolio/ChangeProjectForm'
 export default {
   name: 'ChangeProject',
   middleware: ['auth'],

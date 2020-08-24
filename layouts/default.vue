@@ -8,9 +8,9 @@
 </template>
 
 <script>
-import Navbar from '~/components/partials/Navbar'
-import Footer from '~/components/partials/Footer'
-import Alerts from '~/components/utility/Alerts'
+import Navbar from '~/components/Partials/Navbar'
+import Footer from '~/components/Partials/Footer'
+import Alerts from '~/components/Utils/Alerts'
 
 export default {
   components: {
