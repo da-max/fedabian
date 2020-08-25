@@ -1,9 +1,8 @@
 const asyncLib = require('async')
 const models = require('../models')
-const jwtUtils = require('../utility/jwt.utility')
 
 module.exports = {
-  async list(req, res) {
+  async list(_req, res) {
     const projects = await models.Project.findAll({
       attributes: [
         'id',
@@ -20,13 +19,6 @@ module.exports = {
   },
 
   create(req, res) {
-    // Authorization check.
-    const headerAuth = req.headers.authorization
-    const userId = jwtUtils.getUserId(headerAuth)
-
-    if (userId < 0) {
-      return res.status(400).json({ error: 'wrong token' })
-    }
     // Get fields.
     const title = req.body.title
     const repository = req.body.repository
@@ -40,25 +32,6 @@ module.exports = {
     }
 
     asyncLib.waterfall([
-      (done) => {
-        models.User.findOne({
-          attributes: ['email'],
-          where: { id: userId }
-        })
-          .then((userFound) => {
-            done(null, userFound)
-          })
-          .catch(() => {
-            res.status(500).json({ error: 'unable to verify user' })
-          })
-      },
-      (userFound, done) => {
-        if (userFound.email === 'da-max@tutanota.com') {
-          done(null)
-        } else {
-          return res.status(500).json({ error: 'access unauthorized' })
-        }
-      },
       (done) => {
         models.Project.findOne({
           attributes: ['title'],
@@ -101,35 +74,9 @@ module.exports = {
   },
 
   retrieve(req, res) {
-    const headerAuth = req.headers.authorization
-    const userId = jwtUtils.getUserId(headerAuth)
-
-    if (userId < 0) {
-      return res.status(400).json({ error: 'wrong token' })
-    }
-
     const projectId = req.params.id
 
     asyncLib.waterfall([
-      (done) => {
-        models.User.findOne({
-          attributes: ['email'],
-          where: { id: userId }
-        })
-          .then((userFound) => {
-            done(null, userFound)
-          })
-          .catch(() => {
-            return res.status(500).json({ error: 'unable to verfy user' })
-          })
-      },
-      (userFound, done) => {
-        if (userFound.email === 'da-max@tutanota.com') {
-          done(null)
-        } else {
-          return res.status(500).json({ error: 'access unauthorized' })
-        }
-      },
       (done) => {
         models.Project.findOne({
           attributes: [
@@ -160,13 +107,6 @@ module.exports = {
   },
 
   update(req, res) {
-    const headerAuth = req.headers.authorization
-    const userId = jwtUtils.getUserId(headerAuth)
-
-    if (userId < 0) {
-      return res.status(400).json({ error: 'wrong token' })
-    }
-
     const projectId = req.params.id
 
     const title = req.body.title
@@ -176,25 +116,6 @@ module.exports = {
     const description = req.body.description
 
     asyncLib.waterfall([
-      (done) => {
-        models.User.findOne({
-          attributes: ['email'],
-          where: { id: userId }
-        })
-          .then((userFound) => {
-            done(null, userFound)
-          })
-          .catch(() => {
-            return res.status(500).json({ error: 'unable to verfy user' })
-          })
-      },
-      (userFound, done) => {
-        if (userFound.email === 'da-max@tutanota.com') {
-          done(null)
-        } else {
-          return res.status(500).json({ error: 'access unauthorized' })
-        }
-      },
       (done) => {
         models.Project.findOne({
           attributes: [
@@ -210,10 +131,7 @@ module.exports = {
           .then((projectFound) => {
             done(null, projectFound)
           })
-          .catch((err) => {
-            console.log(err)
-            return res.status(403).json({ error: 'project not found' })
-          })
+          .catch(() => res.status(403).json({ error: 'project not found' }))
       },
       (projectFound, done) => {
         if (projectFound) {
@@ -229,7 +147,7 @@ module.exports = {
               done(null, projectFound)
             })
             .catch(() => {
-              res.status(500).json({ error: 'cannot update user' })
+              res.status(500).json({ error: 'cannot update project' })
             })
         } else {
           return res.status(403).json({ error: 'project not found' })
@@ -237,44 +155,18 @@ module.exports = {
       },
       (projectFound) => {
         if (projectFound) {
-          return res.status(201).json({ error: 'cannot update project' })
+          return res.status(201).json({ message: 'project update' })
+        } else {
+          return res.status(500).json({ error: 'cannot update project' })
         }
       }
     ])
   },
 
   delete(req, res) {
-    // Check if user is login.
-    const headerAuth = req.headers.authorization
-    const userId = jwtUtils.getUserId(headerAuth)
-
-    if (userId < 0) {
-      return res.status(400).json({ error: 'wrong token' })
-    }
-
     const projectId = req.params.id
 
     asyncLib.waterfall([
-      (done) => {
-        models.User.findOne({
-          attributes: ['email'],
-          where: { id: userId }
-        })
-          .then((userFound) => {
-            done(null, userFound)
-          })
-          .catch((err) => {
-            console.log(err)
-            return res.status(500).json({ error: 'unable to verify user' })
-          })
-      },
-      (userFound, done) => {
-        if (userFound.email === 'da-max@tutanota.com') {
-          done(null)
-        } else {
-          return res.status(500).json({ error: 'access unauthorized' })
-        }
-      },
       (done) => {
         models.Project.destroy({
           where: { id: projectId }

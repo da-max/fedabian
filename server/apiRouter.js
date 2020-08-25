@@ -22,10 +22,16 @@ exports.router = (() => {
 
   // Projects routes
   apiRouter.route('/projects').get(projectsControlers.list)
-  apiRouter.route('/projects').post(projectsControlers.create)
-  apiRouter.route('/project/:id').delete(projectsControlers.delete)
-  apiRouter.route('/projects/:id').get(projectsControlers.retrieve)
-  apiRouter.route('/projects/:id').put(projectsControlers.update)
+  apiRouter.route('/projects').post(authMiddleware, projectsControlers.create)
+  apiRouter
+    .route('/project/:id')
+    .delete(authMiddleware, projectsControlers.delete)
+  apiRouter
+    .route('/projects/:id')
+    .get(authMiddleware, projectsControlers.retrieve)
+  apiRouter
+    .route('/projects/:id')
+    .put(authMiddleware, projectsControlers.update)
 
   // Mathematics routes
 
