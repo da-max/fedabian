@@ -13,8 +13,12 @@ exports.router = (() => {
   // Users routes
   apiRouter.route('/users').post(usersControlers.register)
   apiRouter.route('/users/login').post(usersControlers.login)
-  apiRouter.route('/users/current').get(usersControlers.getUserProfile)
-  apiRouter.route('/users/current').put(usersControlers.updateUserProfile)
+  apiRouter
+    .route('/users/current')
+    .get(authMiddleware, usersControlers.getUserProfile)
+  apiRouter
+    .route('/users/current')
+    .put(authMiddleware, usersControlers.updateUserProfile)
 
   // Projects routes
   apiRouter.route('/projects').get(projectsControlers.list)

@@ -154,10 +154,6 @@ module.exports = {
     const headerAuth = req.headers.authorization
     const userId = jwtUtils.getUserId(headerAuth)
 
-    if (userId < 0) {
-      return res.status(201).json({ error: 'wrong token' })
-    }
-
     models.User.findOne({
       attributes: [
         'id',
@@ -176,7 +172,7 @@ module.exports = {
           }
           res.status(201).json(response)
         } else {
-          res.status(404).json({ error: 'user not found' })
+          res.status(400).json({ error: 'user not found' })
         }
       })
       .catch(() => {
