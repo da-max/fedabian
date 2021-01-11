@@ -1,0 +1,42 @@
+version: "3.9"
+
+services:
+  db:
+    container_name: mongodb
+    image: mongo:latest
+    restart: always
+    env_file:
+      - .env
+    ports: 
+      - 27017:27017
+    environment: 
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+  
+  webapp:
+    image: node:latest
+    container_name: nuxt
+    command: npm run dev
+    volumes:
+      - ./webapp:/usr/src/app
+    working_dir: /usr/src/app
+    ports: 
+    - 3000:3000
+    environment: 
+      HOST: 0.0.0.0
+  
+  api:
+    container_name: flask
+    depends_on: 
+      - db
+    build:
+      context: ./api
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./api:/usr/src/app
+    command: python run.py
+    ports:
+      - 5000:5000
+      - 4000:4000
+    environment: 
+      HOST: 0.0.0.0
