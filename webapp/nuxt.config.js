@@ -34,8 +34,24 @@ export default {
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
     // https://go.nuxtjs.dev/pwa
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
+    // https://github.com/nuxt-community/apollo-module
+    '@nuxtjs/apollo'
   ],
+
+  // Apollo configuration
+  apollo: {
+    clientConfigs: {
+      default: {
+        httpEndpoint: 'http://localhost:4000/graphql'
+      }
+    }
+  },
+
+  // TailwindCss configuration
+  tailwindcss: {
+    cssPath: '~/assets/scss/main.scss'
+  },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
