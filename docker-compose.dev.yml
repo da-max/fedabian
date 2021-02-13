@@ -5,14 +5,16 @@ services:
     container_name: mongodb
     image: mongo:latest
     restart: always
-    env_file:
-      - .env
-    ports: 
+    ports:
       - 27017:27017
-    environment: 
+    expose:
+      - 27017
+    environment:
       MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: example
-  
+      MONGO_INITDB_ROOT_PASSWORD: password
+    volumes:
+      - mongodata:/data/db
+
   webapp:
     image: node:latest
     container_name: nuxt
