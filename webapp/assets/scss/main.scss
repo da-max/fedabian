@@ -1,0 +1,64 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@font-face {
+  font-family: "Roboto";
+  src: url("~static/fonts/Roboto/Roboto-Bold.ttf") format("TrueType");
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("~static/fonts/Roboto/Roboto-Regular.ttf") format("TrueType");
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Pacifico";
+  src: url("~static/fonts/Pacifico/Pacifico-Regular.ttf") format("TrueType");
+  font-weight: normal;
+}
+
+$background-image: url("../images/mainBg2.jpg");
+
+body, #__nuxt, #__layout, main {
+  @apply h-screen;
+}
+
+body {
+  background: fixed no-repeat $background-image;
+  background-size: cover;
+  font-family: "Roboto", sans-serif;
+  @apply text-blue-900;
+}
+
+h1 {
+  @apply text-3xl;
+}
+
+h2 {
+  @apply text-2xl;
+}
+
+.pacifico {
+  font-family: "Pacifico", sans-serif;
+}
+
+
+a {
+  @apply text-gray-700;
+  &:hover {
+    @apply text-black;
+  }
+}
+
+.btn {
+  @apply p-4 font-bold;
+  &.btn-primary {
+    @apply text-blue-800 bg-blue-200 rounded transition-all duration-300;
+    &:hover {
+      @apply bg-blue-100 text-blue-900 shadow border-blue-200 border;
+    }
+  }
+}
