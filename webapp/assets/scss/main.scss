@@ -22,7 +22,12 @@
 
 $background-image: url("../images/mainBg2.jpg");
 
-body, #__nuxt, #__layout, main {
+@import "~assets/scss/icons.scss";
+
+body,
+#__nuxt,
+#__layout,
+main {
   @apply h-screen;
 }
 
@@ -30,7 +35,12 @@ body {
   background: fixed no-repeat $background-image;
   background-size: cover;
   font-family: "Roboto", sans-serif;
-  @apply text-blue-900;
+  @apply text-default;
+}
+
+h1,
+h2 {
+  @apply text-center;
 }
 
 h1 {
@@ -45,7 +55,6 @@ h2 {
   font-family: "Pacifico", sans-serif;
 }
 
-
 a {
   @apply text-gray-700;
   &:hover {
@@ -56,9 +65,24 @@ a {
 .btn {
   @apply p-4 font-bold;
   &.btn-primary {
-    @apply text-blue-800 bg-blue-200 rounded transition-all duration-300;
+    @apply text-primary bg-inverse-primary rounded transition-all duration-300;
     &:hover {
-      @apply bg-blue-100 text-blue-900 shadow border-blue-200 border;
+      @apply bg-inverse-default text-default shadow border-inverse-primary border;
     }
   }
+}
+
+.skew {
+  @apply bg-inverse-default transform skew-y-3 p-20 my-20 text-center text-xl;
+  > * {
+    @apply transform -skew-y-3;
+  }
+}
+
+.container {
+  @apply w-2/3 m-auto;
+}
+
+.card {
+  @apply p-12 bg-inverse-default rounded;
 }
