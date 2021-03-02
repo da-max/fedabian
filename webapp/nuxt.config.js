@@ -28,7 +28,9 @@ export default {
     // https://go.nuxtjs.dev/typescript
     '@nuxt/typescript-build',
     // https://go.nuxtjs.dev/tailwindcss
-    '@nuxtjs/tailwindcss'
+    '@nuxtjs/tailwindcss',
+    // https://github.com/nuxt-community/fontawesome-module
+    '@nuxtjs/fontawesome'
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
@@ -51,6 +53,23 @@ export default {
   // TailwindCss configuration
   tailwindcss: {
     cssPath: '~/assets/scss/main.scss'
+  },
+
+  // Fontawesome configuration
+  fontawesome: {
+    icons: {
+      brands: [
+        'faCss3Alt',
+        'faDocker',
+        'faFedora',
+        'faGitlab',
+        'faHtml5',
+        'faJs',
+        'faLinux',
+        'faPython',
+        'faVuejs'
+      ]
+    }
   },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
