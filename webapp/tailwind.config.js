@@ -11,8 +11,10 @@ module.exports = {
       colors: {
         default: defaultTheme.colors.blue[900],
         primary: defaultTheme.colors.blue[800],
+        secondary: defaultTheme.colors.gray[700],
         'inverse-default': defaultTheme.colors.blue[100],
-        'inverse-primary': defaultTheme.colors.blue[200]
+        'inverse-primary': defaultTheme.colors.blue[200],
+        'inverse-secondary': defaultTheme.colors.gray[300]
       }
     }
   },
