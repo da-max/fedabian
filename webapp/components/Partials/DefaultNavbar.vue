@@ -2,7 +2,7 @@
   <div class="navbar-container">
     <nav class="navbar-nav space-x-4">
       <div>
-        <nuxt-link to="/">
+        <nuxt-link to="/about">
           Présentation
         </nuxt-link>
       </div>

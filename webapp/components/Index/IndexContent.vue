@@ -18,20 +18,15 @@
           Liste (non exhaustive) des thèmes qui m’intéressent
         </h2>
         <ul class="list-disc">
-          <li>Open source, logiciel libre et décentralisation</li>
-          <li>Engagement politique et solidaire</li>
-          <li>Écologie</li>
-          <li>Circuit court et consommation éthique</li>
-          <li>Finance décentralisée</li>
+          <li v-for="passion in passions" :key="passion">
+            {{ passion }}
+          </li>
         </ul>
       </section>
-      <footer class="mt-24 text-left">
-        <p>Ça vous intéresse ?</p>
-        <div class="text-center">
-          <nuxt-link to="/" class="btn btn-primary">
-            Me contacter
-          </nuxt-link>
-        </div>
+      <footer class="mt-24 text-center">
+        <nuxt-link to="/contact" class="btn btn-primary">
+          Me contacter
+        </nuxt-link>
       </footer>
     </article>
   </section>
@@ -40,20 +35,19 @@
 <script lang="ts">
 import Vue from 'vue'
 
-export default Vue.extend({
-  name: 'DefaultNavbar'
-})
+export default class IndexContent extends Vue {
+  name: string = 'DefaultNavbar'
+  passions: string[] = [
+    'Open source, logiciel libre et décentralisation',
+    'Engagement politique et solidaire',
+    'Écologie',
+    'Circuit court et consommation éthique'
+  ]
+}
 
 </script>
 
 <style lang="scss" scoped>
-.skew {
-  @apply bg-blue-100 transform skew-y-3 p-20 my-20 text-center text-xl;
-  > * {
-    @apply transform -skew-y-3;
-  }
-}
-
 ul > * {
   @apply mt-2;
 }
