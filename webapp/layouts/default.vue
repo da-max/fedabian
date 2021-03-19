@@ -5,8 +5,8 @@
   </main>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 main {
-  @apply flex flex-col
+  @apply flex flex-col;
 }
 </style>

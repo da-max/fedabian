@@ -11,7 +11,7 @@ import Vue from 'vue'
 export default Vue.extend({})
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 section {
   @apply flex-1
 }
