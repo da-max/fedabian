@@ -33,8 +33,9 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import { Vue, Component } from 'vue-property-decorator'
 
+@Component
 export default class IndexContent extends Vue {
   name: string = 'DefaultNavbar'
   passions: string[] = [
