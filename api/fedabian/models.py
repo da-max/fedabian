@@ -1,13 +1,13 @@
 from passlib.hash import pbkdf2_sha256
-from flask_mongoengine import MongoEngine
+from mongoengine import Document
+from mongoengine.fields import DateTimeField, EmailField, ReferenceField, StringField
 
-db = MongoEngine()
 
-class User(db.Document):
+class User(Document):
     meta = {'collection': 'user'}
-    email = db.EmailField(required=True, max_lenght=100)
-    username = db.StringField(uniq=True, max_length=100, required=True)
-    password = db.StringField(required=True)
+    email = EmailField(unique=True, required=True, max_lenght=100)
+    username = StringField(unique=True, max_length=100, required=True)
+    password = StringField(required=True)
 
     @staticmethod
     def generate_hash(password):

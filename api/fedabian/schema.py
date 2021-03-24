@@ -1,6 +1,5 @@
-from flask import jsonify
 from flask_jwt_extended import create_access_token
-from graphene import ObjectType, Mutation, String, Schema, Field
+from graphene import ObjectType, Mutation, String, Field
 from graphene.relay import Node
 from graphene_mongo import MongoengineConnectionField, MongoengineObjectType
 
@@ -42,6 +41,3 @@ class Query(ObjectType):
 
 class Mutations(ObjectType):
     login = Login.Field()
-
-
-schema = Schema(query=Query, mutation=Mutations, types=[User])
