@@ -6,12 +6,11 @@ services:
     image: mongo:latest
     restart: always
     ports:
-      - 27017:27017
-    expose:
-      - 27017
+      - "27017:27017"
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: password
+      MONGO_INITDB_DATABASE: fedabian
     volumes:
       - mongodata:/data/db
 
@@ -22,15 +21,13 @@ services:
     volumes:
       - ./webapp:/usr/src/app
     working_dir: /usr/src/app
-    ports: 
-    - 3000:3000
-    environment: 
+    ports:
+      - 3000:3000
+    environment:
       HOST: 0.0.0.0
-  
+
   api:
     container_name: flask
-    depends_on: 
-      - db
     build:
       context: ./api
       dockerfile: Dockerfile.dev
@@ -39,6 +36,10 @@ services:
     command: python run.py
     ports:
       - 5000:5000
-      - 4000:4000
-    environment: 
+    environment:
       HOST: 0.0.0.0
+    links:
+      - db
+
+volumes:
+  mongodata:
