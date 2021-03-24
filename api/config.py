@@ -10,7 +10,7 @@ from dotenv import load_dotenv
 BASE_DIR = Path(__file__).resolve().parent
 
 # See : https://pypi.org/project/python-dotenv/
-ENV_PATH = BASE_DIR / '.env'
+ENV_PATH = Path.joinpath(BASE_DIR, '.env')
 
 load_dotenv(ENV_PATH)
 
@@ -19,7 +19,8 @@ load_dotenv(ENV_PATH)
 # >>> "".join([random.choice(string.printable) for _ in range(24)])
 SECRET_KEY = os.getenv('SECRET_KEY')
 
+DEBUG = os.getenv('DEBUG')
+
 MONGODB_SETTINGS = {
-    'db': os.getenv('MONGODB_NAME'),
-    'host': os.getenv('MONGODB_HOST')
+    'uri': os.getenv('MONGODB_HOST')
 }
