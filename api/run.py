@@ -11,7 +11,6 @@ app.config.from_object('config')
 
 connect(host=app.config['MONGODB_SETTINGS']['uri'])
 
-
 jwt = JWTManager(app)
 
 app.add_url_rule('/graphql', view_func=GraphQLView.as_view(
@@ -19,7 +18,6 @@ app.add_url_rule('/graphql', view_func=GraphQLView.as_view(
     schema=schema,
     graphiql=True
 ))
-
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
