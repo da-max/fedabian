@@ -136,7 +136,8 @@ export default class AboutTechnologies extends Vue {
           cherche à les rendre prédominantes dans tous les projets qui
           nécessitent un déploiement rapide.
         </p>
-      `
+      `,
+      inProgress: true
     }
   ]
 }

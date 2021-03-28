@@ -4,5 +4,6 @@ export type ITechnology = {
   icons: IIcon[]
   title: string
   content: string,
-  class?: string
+  class?: string,
+  inProgress?: boolean
 }
