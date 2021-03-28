@@ -28,12 +28,9 @@ p {
 }
 
 .technologies-container {
-  @apply grid grid-cols-6 gap-10 m-10;
+  @apply grid grid-cols-6 gap-10 m-2;
   > * {
     @apply col-span-full;
-  }
-  .in-progress {
-    @apply text-secondary;
   }
 
   > .technology {
@@ -47,6 +44,12 @@ p {
         @apply text-justify;
       }
     }
+  }
+}
+
+@screen md {
+  .technologies-container {
+    @apply m-10;
   }
 }
 
