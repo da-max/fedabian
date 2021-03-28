@@ -1,7 +1,7 @@
 """
 Types, queries and mutation for the core app.
 """
-from flask_jwt_extended import create_access_token
+from flask_jwt_extended import create_access_token, jwt_required
 from graphene import ObjectType, Mutation, String, Field
 from graphene.relay import Node
 from graphene_mongo import MongoengineConnectionField, MongoengineObjectType
@@ -72,6 +72,7 @@ class CreateProject(Mutation):
     project = Field(lambda: Project)
 
     @classmethod
+    @jwt_required
     def mutate(cls, info: dict, *args, title: str = None, description, repo=None, demo=None):
         try:
             if title is None:
