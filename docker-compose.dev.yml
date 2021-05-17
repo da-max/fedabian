@@ -6,25 +6,26 @@ services:
     image: mongo:latest
     restart: always
     ports:
-      - "27017:27017"
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: password
-      MONGO_INITDB_DATABASE: fedabian
+      - 27017:27017
     volumes:
       - mongodata:/data/db
+    env_file:
+      - .env
 
   webapp:
-    image: node:latest
+    image: node:lts
     container_name: nuxt
-    command: npm run dev
+    command: yarn dev
     volumes:
       - ./webapp:/usr/src/app
     working_dir: /usr/src/app
-    ports:
-      - 3000:3000
     environment:
       HOST: 0.0.0.0
+    depends_on:
+      - api
+    network_mode: host
+    env_file:
+      - .env
 
   api:
     container_name: flask
@@ -34,12 +35,13 @@ services:
     volumes:
       - ./api:/usr/src/app
     command: python run.py
-    ports:
-      - 5000:5000
+    network_mode: host
     environment:
       HOST: 0.0.0.0
-    links:
+    depends_on:
       - db
+    env_file:
+      - .env
 
 volumes:
   mongodata:
