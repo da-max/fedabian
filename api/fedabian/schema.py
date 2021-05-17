@@ -2,11 +2,12 @@
 Types, queries and mutation for the core app.
 """
 from flask_jwt_extended import create_access_token, jwt_required
-from graphene import ObjectType, Mutation, String, Field
+from graphene import ObjectType, Mutation, String, Field, Boolean, List
 from graphene.relay import Node
 from graphene_mongo import MongoengineConnectionField, MongoengineObjectType
 
 from fedabian.models import User as UserModel, Project as ProjectModel
+from utils.mail import EmailThread
 
 
 # Types
@@ -50,8 +51,8 @@ class Query(ObjectType):
     """
     Query for the core app.
     """
-    users = MongoengineConnectionField(User)
-    projects = MongoengineConnectionField(Project)
+    all_users = MongoengineConnectionField(User)
+    all_projects = MongoengineConnectionField(Project)
 
 
 # Mutations
@@ -84,6 +85,41 @@ class CreateProject(Mutation):
             return CreateProject(project=project)
         except Exception as e:
             return Exception(f'The project can not be saved, please, check if you have complet all fields : {e}')
+
+
+class SendContactMail(Mutation):
+    """
+    Class for send mail with a mutation.
+
+    :param recipient_list: list of the recipients
+    :type recipient_list: str or list
+    :param object: object of the mail
+    :type object: str
+    :param content: content of the mail
+    :type content: str
+    """
+
+    class Arguments:
+        name = String()
+        email = String()
+        content = String()
+
+    ok = Boolean()
+
+    @classmethod
+    def mutate(cls, info, *args, **kwargs):
+        """
+        Call when the mutation was send.
+        """
+        ok = True
+        try:
+            content: str = f"Nom : {kwargs['name']}\n Email : {kwargs['email']}\n Content : {kwargs['content']}"
+            EmailThread("[Fedabian] Prise de contact", content).start()
+        except Exception as e:
+            ok = False
+            return Exception(e)
+
+        return SendContactMail(ok)
 
 
 class Login(Mutation):
@@ -145,3 +181,4 @@ class Mutations(ObjectType):
     """
     login = Login.Field()
     create_project = CreateProject.Field()
+    send_contact_mail = SendContactMail.Field()
