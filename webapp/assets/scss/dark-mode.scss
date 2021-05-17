@@ -1,0 +1,44 @@
+.dark-mode {
+  body {
+    @apply text-inverse-default;
+  }
+
+  .active-link {
+    @apply text-inverse-primary;
+  }
+
+  a {
+    @apply text-inverse-secondary;
+
+    &:not(.active-link):hover {
+      @apply text-inverse-primary;
+    }
+  }
+
+  input, textarea {
+    @apply bg-primary border-inverse-primary;
+    &:focus {
+      @apply border-primary;
+    }
+  }
+
+  .btn {
+    &.btn-primary {
+      @apply text-inverse-primary bg-primary;
+      &:hover {
+        @apply bg-default text-inverse-default border-primary;
+      }
+    }
+  }
+
+  .skew {
+    @apply bg-default;
+  }
+
+  .card {
+
+    &:not(.card-transparent) {
+      @apply bg-default;
+    }
+  }
+}

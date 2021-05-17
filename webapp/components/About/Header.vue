@@ -1,20 +1,23 @@
 <template>
-  <header class="container">
-    <h1>
+  <UtilsHeader>
+    <template #title>
       À propos
-    </h1>
-    <p>
+    </template>
+    <template #content>
       Développeur web et passionné d’informatique, j’ai pour principal
       objectif de rendre le web plus respectueux de l’utilisateur,
       plus ouvert et accessible au plus grand nombre.
-    </p>
-  </header>
+    </template>
+  </Utilsheader>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
+import { Component } from 'vue-property-decorator'
+
+@Component
 export default class AboutHeader extends Vue {
-  name: string = 'AboutHeader'
+  name: string = 'Header.vue'
 }
 </script>
 

@@ -1,5 +1,5 @@
 <template>
-  <aside class="card">
+  <aside :class="['card', {'card-hover': hover, 'card-transparent': transparent, 'card-small': small}]">
     <header>
       <slot name="header" />
     </header>
@@ -10,10 +10,13 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator'
+import { Vue, Component, Prop } from 'vue-property-decorator'
 
 @Component
 export default class Card extends Vue {
   name: string = 'Card'
+  @Prop({ required: false, default: false }) readonly hover: boolean
+  @Prop({ required: false, default: false }) readonly transparent: boolean
+  @Prop({ required: false, default: false }) readonly small: boolean
 }
 </script>

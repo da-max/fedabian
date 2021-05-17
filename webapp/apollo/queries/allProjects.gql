@@ -1,0 +1,13 @@
+{
+  allProjects {
+    edges {
+      node {
+        id
+        title
+        description
+        repo
+        demo
+      }
+    }
+  }
+}

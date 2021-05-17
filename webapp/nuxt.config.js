@@ -1,7 +1,7 @@
 export default {
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
-    title: 'fedabian',
+    title: 'Fedabian',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -10,6 +10,14 @@ export default {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
+  },
+
+  router: {
+    linkExactActiveClass: 'active-link'
+  },
+
+  pageTransition: {
+    name: 'page'
   },
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
@@ -30,7 +38,8 @@ export default {
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
     // https://github.com/nuxt-community/fontawesome-module
-    '@nuxtjs/fontawesome'
+    '@nuxtjs/fontawesome',
+    '@nuxtjs/color-mode'
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
@@ -43,15 +52,17 @@ export default {
 
   // Apollo configuration
   apollo: {
+    includeNodeModules: true,
     clientConfigs: {
       default: {
-        httpEndpoint: 'http://localhost:4000/graphql'
+        httpEndpoint: process.env.GRAPHQL_ENDPOINT
       }
     }
   },
 
   // TailwindCss configuration
   tailwindcss: {
+    jit: true,
     cssPath: '~/assets/scss/main.scss'
   },
 
@@ -66,9 +77,22 @@ export default {
         'faHtml5',
         'faJs',
         'faLinux',
+        'faMastodon',
         'faPython',
+        'faTwitter',
         'faVuejs'
+      ],
+      solid: [
+        'faBars',
+        'faEnvelope',
+        'faMoon',
+        'faSun'
       ]
+    },
+
+    // color mode
+    colorMode: {
+      classSuffix: ''
     }
   },
 

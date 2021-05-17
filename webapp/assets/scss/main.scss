@@ -1,6 +1,7 @@
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind screens;
 
 @font-face {
   font-family: "Roboto";
@@ -23,12 +24,14 @@
 $background-image: url("../images/mainBg2.jpg");
 
 @import "~assets/scss/icons.scss";
+@import "~/assets/scss/dark-mode";
+@import "~/assets/scss/responsive";
 
 body,
 #__nuxt,
 #__layout,
 main {
-  @apply h-screen;
+  @apply min-h-screen;
 }
 
 body {
@@ -37,7 +40,7 @@ body {
   background-attachment: fixed;
   background-size: cover;
   font-family: "Roboto", sans-serif;
-  @apply text-default;
+  @apply text-default text-sm;
 }
 
 h1,
@@ -46,36 +49,55 @@ h2 {
 }
 
 h1 {
-  @apply text-3xl;
+  @apply text-2xl;
 }
 
 h2 {
-  @apply text-2xl;
+  @apply text-xl;
+}
+
+input, textarea {
+  @apply border border-primary p-1 rounded transition-colors duration-300;
+  &:focus {
+    @apply border-inverse-primary outline-none;
+  }
+}
+
+textarea {
+  @apply w-full resize;
 }
 
 .pacifico {
   font-family: "Pacifico", sans-serif;
 }
 
+.active-link {
+  @apply text-primary font-semibold;
+}
+
 a {
-  @apply text-gray-700;
-  &:hover {
-    @apply text-black;
+  @apply text-secondary;
+  &.active-link {
+    cursor: default;
+  }
+
+  &:not(.active-link):hover {
+    @apply text-primary;
   }
 }
 
 .btn {
-  @apply p-4 font-bold;
+  @apply p-3 font-bold;
   &.btn-primary {
-    @apply text-primary bg-inverse-primary rounded transition-all duration-300;
+    @apply text-primary bg-inverse-primary rounded transition-all duration-300 border border-transparent;
     &:hover {
-      @apply bg-inverse-default text-default shadow border-inverse-primary border;
+      @apply bg-inverse-default text-default shadow border-inverse-primary;
     }
   }
 }
 
 .skew {
-  @apply bg-inverse-default transform skew-y-3 py-20 px-5 my-20 text-center text-xl;
+  @apply bg-inverse-default transform skew-y-3 py-20 px-5 my-20 text-center;
   > * {
     @apply transform -skew-y-3;
   }
@@ -83,22 +105,40 @@ a {
 
 .container {
   @apply w-full;
+  > p {
+    @apply text-center;
+  }
 }
 
 .card {
   @apply p-5 bg-inverse-default rounded;
+  &.card-hover {
+    @apply transition-shadow duration-300;
+    &:hover {
+      @apply shadow-2xl;
+    }
+  }
+
+  &.card-transparent {
+    @apply bg-transparent;
+  }
+
+  &.card-small {
+    @apply p-2;
+  }
 }
 
-@screen md {
-  .container {
-    @apply w-2/3 m-auto;
+.main-section {
+  @apply mt-20 min-h-screen;
+  .main-section-header {
+    @apply py-16;
   }
+}
 
-  .skew {
-    @apply px-20
-  }
+.page-enter-active, .page-leave-active {
+  @apply transition-opacity duration-300;
+}
 
-  .card {
-    @apply p-12
-  }
+.page-enter, .page-leave-active {
+  @apply opacity-0;
 }

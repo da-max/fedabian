@@ -1,5 +1,5 @@
 <template>
-  <Card :class="['card', {'in-progress': technology.inProgress}]">
+  <UtilsCard :class="['card', {'in-progress': technology.inProgress}]">
     <template #header>
       <span v-for="icon in technology.icons" :key="icon[1]">
         <FontAwesomeIcon
@@ -14,7 +14,7 @@
     <template #content>
       <div v-html="technology.content" />
     </template>
-  </Card>
+  </UtilsCard>
 </template>
 
 <script lang="ts">
@@ -23,14 +23,20 @@ import type { ITechnology } from '@/types/technology.model'
 
 @Component
 export default class AboutTechnology extends Vue {
-  name: string = 'AboutTechnology'
+  name: string = 'Technology.vue'
 
   @Prop({ type: Object, required: true }) readonly technology!: ITechnology
 }
 </script>
 
 <style lang="scss" scoped>
+.dark-mode {
+  .in-progress {
+    @apply bg-secondary text-inverse-secondary;
+  }
+}
+
 .in-progress {
-  @apply bg-gray-200 text-gray-500
+  @apply bg-inverse-secondary text-secondary;
 }
 </style>

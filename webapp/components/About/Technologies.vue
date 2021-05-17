@@ -1,5 +1,5 @@
 <template>
-  <section class="main-section">
+  <section>
     <h1>Mes technologies</h1>
     <div class="technologies-container">
       <AboutTechnology
@@ -18,7 +18,7 @@ import type { ITechnology } from '@/types/technology.model'
 
 @Component
 export default class AboutTechnologies extends Vue {
-  name: string = 'AboutTechnologies'
+  name: string = 'Technologies.vue'
   technologies: ITechnology[] = [
     {
       icons: [
@@ -143,3 +143,42 @@ export default class AboutTechnologies extends Vue {
 }
 
 </script>
+
+<style lang="scss">
+.technologies-container {
+  @apply grid grid-cols-6 gap-10 m-2;
+  > * {
+    @apply col-span-full;
+  }
+
+  > .technology {
+    > header {
+      @apply text-center text-4xl;
+    }
+
+    > section {
+      @apply mt-5;
+      p {
+        @apply text-justify;
+      }
+    }
+  }
+}
+
+@screen md {
+  .technologies-container {
+    @apply m-10;
+  }
+}
+
+@screen xl {
+  .technologies-container {
+    & > * {
+      @apply col-span-2;
+    }
+    & > .large {
+      @apply col-span-3;
+    }
+  }
+}
+</style>

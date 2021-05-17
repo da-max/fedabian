@@ -2,11 +2,11 @@
   <section class="skew">
     <article class="md:w-2/3 m-auto">
       <header>
-        <h2 class="text-3xl">
+        <h2 class="md:text-3xl">
           Créer des sites web afin de mettre en avant des projets éthiques et solidaires.
         </h2>
         <p>
-          Animé par des valeurs, les sites que je crée respecteront la vie privée de l’utilisateur.
+          Animé par des valeurs, les sites que je crée respecte la vie privée de l’utilisateur.
         </p>
       </header>
       <section>

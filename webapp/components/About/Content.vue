@@ -1,6 +1,6 @@
 <template>
   <section>
-    <header class="skew main-section">
+    <header class="skew">
       <div class="container">
         <p>
           Au départ simple autodidacte, je découvre et apprend la programmation
@@ -18,7 +18,7 @@
   </section>
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
 h1 {
   @apply mb-10;
 }
@@ -27,40 +27,7 @@ p {
   @apply text-xl text-center;
 }
 
-.technologies-container {
-  @apply grid grid-cols-6 gap-10 m-2;
-  > * {
-    @apply col-span-full;
-  }
-
-  > .technology {
-    > header {
-      @apply text-center text-4xl;
-    }
-
-    > section {
-      @apply mt-5;
-      p {
-        @apply text-justify;
-      }
-    }
-  }
-}
-
-@screen md {
-  .technologies-container {
-    @apply m-10;
-  }
-}
-
-@screen xl {
-  .technologies-container {
-    & > * {
-      @apply col-span-2;
-    }
-    & > .large {
-      @apply col-span-3;
-    }
-  }
+header {
+  @apply mb-32;
 }
 </style>
