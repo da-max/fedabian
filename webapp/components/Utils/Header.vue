@@ -9,7 +9,7 @@
 import { Component, Vue } from 'vue-property-decorator'
 
 @Component
-export default class UtilsHeader extends Vue {
-  name: sting = 'Header.vue'
+export default class Header extends Vue {
+  name: string = 'Header.vue'
 }
 </script>

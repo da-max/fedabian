@@ -15,8 +15,8 @@ import { Vue, Component, Prop } from 'vue-property-decorator'
 @Component
 export default class Card extends Vue {
   name: string = 'Card'
-  @Prop({ required: false, default: false }) readonly hover: boolean
-  @Prop({ required: false, default: false }) readonly transparent: boolean
-  @Prop({ required: false, default: false }) readonly small: boolean
+  @Prop({ required: false, default: false }) readonly hover: boolean|undefined
+  @Prop({ required: false, default: false }) readonly transparent: boolean|undefined
+  @Prop({ required: false, default: false }) readonly small: boolean|undefined
 }
 </script>

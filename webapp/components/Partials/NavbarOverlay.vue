@@ -25,7 +25,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
 @Component
 export default class NavbarOverlay extends Vue {
   name: string = 'NavbarOverlay'
-  @Prop({ required: false }) readonly display: boolean
+  @Prop({ required: false }) readonly display: boolean|undefined
 }
 </script>
 

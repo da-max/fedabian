@@ -17,9 +17,12 @@ export default class DefaultLayout extends Vue {
   displayNavbarOverlay: boolean = false
 
   toggleDisplayNavbarOverlay (event: Event) {
-    !document.querySelector('#overlay-toggle').contains(event.target)
-      ? this.displayNavbarOverlay = false
-      : this.displayNavbarOverlay = !this.displayNavbarOverlay
+    const overlayToggle: HTMLElement|null = document.querySelector('#overlay-toggle')
+    if (event.target) {
+      overlayToggle && !overlayToggle.contains(<HTMLInputElement>event.target)
+        ? this.displayNavbarOverlay = false
+        : this.displayNavbarOverlay = !this.displayNavbarOverlay
+    }
   }
 }
 </script>

@@ -10,7 +10,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
 @Component
 export default class Alert extends Vue {
   name: string = 'Alert'
-  @Prop({ required: false, default: 'success' }) readonly status: string
+  @Prop({ required: false, default: 'success' }) readonly status: string|undefined
 }
 </script>
 

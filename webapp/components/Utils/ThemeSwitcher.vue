@@ -23,7 +23,10 @@ export default class ThemeSwitcher extends Vue {
   name: string = 'ThemeSwitcher'
 
   toggleTheme (event: Event): void {
-    event.target.checked ? this.$set(this.$colorMode, 'preference', 'dark') : this.$set(this.$colorMode, 'preference', 'light')
+    const eventInput: HTMLInputElement|null = <HTMLInputElement>event.target
+    if (eventInput) {
+      eventInput.checked ? this.$set(this.$colorMode, 'preference', 'dark') : this.$set(this.$colorMode, 'preference', 'light')
+    }
   }
 }
 </script>

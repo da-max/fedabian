@@ -50,7 +50,7 @@ export default class Form extends Vue {
 
   res: Boolean|null = null
 
-  async sendMail (event: Event) :void {
+  async sendMail (event: Event) :Promise<void> {
     if (this.message.email && this.message.content && this.message.name) {
       event.preventDefault()
       const res = await this.$apollo.mutate({

@@ -17,7 +17,7 @@ import { IContactLink } from '~/types/contact-link.model'
 @Component
 export default class ContactLink extends Vue {
   name: string = 'Link.vue'
-  @Prop({ required: true }) readonly contactLink: IContactLink
+  @Prop({ required: true }) readonly contactLink: IContactLink|undefined
 }
 </script>
 

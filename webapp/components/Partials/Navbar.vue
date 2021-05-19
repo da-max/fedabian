@@ -44,7 +44,7 @@ import { Vue, Component, Prop } from 'vue-property-decorator'
 @Component
 export default class Navbar extends Vue {
   name: string = 'Navbar'
-  @Prop({ required: false, default: false }) readonly displayNavbarOverlay: boolean
+  @Prop({ required: false, default: false }) readonly displayNavbarOverlay: boolean|undefined
 }
 
 </script>
@@ -73,7 +73,7 @@ export default class Navbar extends Vue {
 
 .navbar-nav {
 
-  @apply flex justify-center align-middle hidden;
+  @apply flex justify-center items-center hidden;
 
   .theme-switcher {
     @apply relative;
