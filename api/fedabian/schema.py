@@ -5,6 +5,7 @@ from flask_jwt_extended import create_access_token, jwt_required
 from graphene import ObjectType, Mutation, String, Field, Boolean, List
 from graphene.relay import Node
 from graphene_mongo import MongoengineConnectionField, MongoengineObjectType
+from graphene_file_upload.scalars import Upload
 
 from fedabian.models import User as UserModel, Project as ProjectModel
 from utils.mail import EmailThread
@@ -69,19 +70,20 @@ class CreateProject(Mutation):
         description = String(required=False)
         repo = String(required=False)
         demo = String(required=False)
+        image = Upload(required=False)
 
     project = Field(lambda: Project)
 
     @classmethod
     @jwt_required
-    def mutate(cls, info: dict, *args, title: str = None, description, repo=None, demo=None):
+    def mutate(cls, info: dict, *args, title: str = None, description, repo=None, demo=None, image=None):
         try:
             if title is None:
                 raise Exception('The title of the project is not define.')
 
             print(title)
 
-            project = ProjectModel(title=title, description=description, repo=repo, demo=demo).save()
+            project = ProjectModel(title=title, description=description, repo=repo, demo=demo, image=image).save()
             return CreateProject(project=project)
         except Exception as e:
             return Exception(f'The project can not be saved, please, check if you have complet all fields : {e}')

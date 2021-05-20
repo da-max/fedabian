@@ -22,7 +22,6 @@ class EmailThread(threading.Thread):
         else:
             self.recipient_list = [recipient_list]
         super().__init__()
-        print(self.recipient_list)
 
     def run(self):
         with self.app.app_context():
