@@ -19,6 +19,8 @@
     "@nuxt/typescript-runtime": "^2.1.0",
     "@nuxtjs/apollo": "latest",
     "@nuxtjs/pwa": "^3.0.2",
+    "@nuxtjs/robots": "^2.5.0",
+    "@nuxtjs/sitemap": "^2.4.0",
     "core-js": "^3.12.1",
     "fibers": "^5.0.0",
     "graphql-tag": "^2.12.4",
