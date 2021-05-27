@@ -15,7 +15,7 @@
     }
   }
 
-  input, textarea {
+  input:not([type='file']), textarea {
     @apply bg-primary border-inverse-primary;
     &:focus {
       @apply border-primary;

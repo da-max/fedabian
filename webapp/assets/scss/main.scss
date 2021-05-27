@@ -56,7 +56,7 @@ h2 {
   @apply text-xl;
 }
 
-input, textarea {
+input:not([type='file']), textarea {
   @apply border border-primary p-1 rounded transition-colors duration-300;
   &:focus {
     @apply border-inverse-primary outline-none;
@@ -103,7 +103,7 @@ a {
   }
 }
 
-.container {
+.container * {
   @apply w-full;
   > p {
     @apply text-center;
