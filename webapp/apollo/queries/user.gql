@@ -1,0 +1,12 @@
+query User($username: String) {
+  allUsers(username: $username) {
+    edges {
+      node {
+        id
+        email
+        username
+        isAdmin
+      }
+    }
+  }
+}
