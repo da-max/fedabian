@@ -5,7 +5,8 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' }
+      { hid: 'description', name: 'description', content: '' },
+      { hid: 'author', name: 'author', content: 'Maxime Ben Hassen' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
@@ -86,7 +87,8 @@ export default {
         'faBars',
         'faEnvelope',
         'faMoon',
-        'faSun'
+        'faSun',
+        'faTimes'
       ]
     }
   },
@@ -96,6 +98,13 @@ export default {
     UserAgent: '*',
     Disallow: '',
     Sitemap: process.env.HOST + '/sitemap.xml'
+  },
+
+  sitemap: {
+    gzip: true,
+    exclude: [
+      '/account/**'
+    ]
   },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)

@@ -8,7 +8,6 @@ module.exports = {
   },
   purge: [],
   theme: {
-    darkSelector: '.dark-mode',
     extend: {
       colors: {
         default: defaultTheme.colors.blue[900],
@@ -25,12 +24,5 @@ module.exports = {
         'inverse-danger': defaultTheme.colors.red[300]
       }
     }
-  },
-  variants: {
-    backgroundColor: ['dark'],
-    textColor: ['dark', 'dark-hover']
-  },
-  plugins: [
-    require('tailwindcss-dark-mode')()
-  ]
+  }
 }

@@ -12,16 +12,17 @@
 
 <script lang="ts">
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
-import { IError } from '~/types/error.model'
+import { NuxtError } from '@nuxt/types'
+import { IError } from '~/types/utils.model'
 
 @Component
 export default class Error extends Vue {
   name: string = 'error'
-  @Prop({ required: false }) error
+  @Prop({ required: false }) error: NuxtError|undefined
 
   @Watch('error')
   get errorContent (): IError {
-    if (this.error.statusCode === 404) {
+    if (this.error && this.error.statusCode === 404) {
       return {
         title: 'Page non trouvé',
         message: 'La page demandée n’a pas été trouvé',

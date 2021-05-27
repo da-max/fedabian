@@ -3,6 +3,7 @@
     <PartialsNavbar :display-navbar-overlay="displayNavbarOverlay" />
     <Nuxt />
     <PartialsFooter />
+    <UtilsAlerts />
   </main>
 </template>
 
@@ -16,7 +17,7 @@ export default class DefaultLayout extends Vue {
 
   displayNavbarOverlay: boolean = false
 
-  toggleDisplayNavbarOverlay (event: Event) {
+  toggleDisplayNavbarOverlay (event: Event): void {
     const overlayToggle: HTMLElement|null = document.querySelector('#overlay-toggle')
     if (event.target) {
       overlayToggle && !overlayToggle.contains(<HTMLInputElement>event.target)
