@@ -5,19 +5,19 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator'
+import { Vue, Component } from 'nuxt-property-decorator'
 
-import allProjects from '~/apollo/queries/allProjects.gql'
+import ALL_PROJECTS from '~/apollo/queries/allProjects.gql'
 
 @Component({
   apollo: {
     allProjects: {
-      query: allProjects
+      query: ALL_PROJECTS
     }
   }
 })
 export default class ProjectsContent extends Vue {
-  name: string = 'Content.vue'
+  name: string = 'Content'
 }
 </script>
 

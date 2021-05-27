@@ -6,10 +6,16 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Vue } from 'nuxt-property-decorator'
 
 @Component
 export default class Header extends Vue {
   name: string = 'Header.vue'
 }
 </script>
+
+<style lang="scss" scoped>
+p {
+  @apply text-center;
+}
+</style>

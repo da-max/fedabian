@@ -11,8 +11,8 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
-import { IContactLink } from '~/types/contact-link.model'
+import { Component, Prop, Vue } from 'nuxt-property-decorator'
+import { IContactLink } from '~/types/portfolio.model'
 
 @Component
 export default class ContactLink extends Vue {

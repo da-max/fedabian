@@ -1,11 +1,5 @@
 <template>
   <form action="#" class="contact-form">
-    <UtilsAlert v-show="res">
-      <p>Votre message a bien été envoyé.</p>
-    </UtilsAlert>
-    <UtilsAlert v-show="res === false" status="danger">
-      <p>Une erreur est survenue, merci de réessayer.</p>
-    </UtilsAlert>
     <UtilsFormInput v-model="message.name" input-name="name" placeholder="Da-max">
       Votre nom
     </UtilsFormInput>
@@ -34,10 +28,12 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
-import { IMessage } from '~/types/message.model'
+import { Component, Vue } from 'nuxt-property-decorator'
+import { FetchResult } from 'apollo-link'
+import { IMessage } from '~/types/portfolio.model'
 
-import sendContactMail from '~/apollo/sendContactMail.gql'
+import SEND_CONTACT_MAIL from '~/apollo/sendContactMail.gql'
+import { alertStore } from '~/store'
 
 @Component
 export default class Form extends Vue {
@@ -53,18 +49,22 @@ export default class Form extends Vue {
   async sendMail (event: Event) :Promise<void> {
     if (this.message.email && this.message.content && this.message.name) {
       event.preventDefault()
-      const res = await this.$apollo.mutate({
-        mutation: sendContactMail,
+      const res: FetchResult = await this.$apollo.mutate({
+        mutation: SEND_CONTACT_MAIL,
         variables: {
           ...this.message
         }
       })
-      this.res = res.data.sendContactMail.ok
-      if (this.res) {
+      if (res.data && res.data.sendContactMail.ok) {
+        alertStore.ADD_ALERT({
+          title: 'Message envoyé !',
+          content: 'Votre message a bien été envoyé, je vous répondrais le plus vite possible.',
+          status: 'success'
+        })
         this.message = {
+          email: '',
           name: '',
-          content: '',
-          email: ''
+          content: ''
         }
       }
     }

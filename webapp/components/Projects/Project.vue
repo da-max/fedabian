@@ -15,8 +15,8 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
-import { IProject } from '~/types/project.model'
+import { Component, Prop, Vue } from 'nuxt-property-decorator'
+import { IProject } from '~/types/portfolio.model'
 
 @Component
 export default class Project extends Vue {

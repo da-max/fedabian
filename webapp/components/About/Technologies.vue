@@ -13,8 +13,8 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator'
-import type { ITechnology } from '@/types/technology.model'
+import { Vue, Component } from 'nuxt-property-decorator'
+import type { ITechnology } from '~/types/portfolio.model'
 
 @Component
 export default class AboutTechnologies extends Vue {
