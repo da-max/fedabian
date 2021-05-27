@@ -15,6 +15,9 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 
 DEBUG = os.getenv('DEBUG')
 HOST = os.getenv('HOST')
+
+UPLOAD_FOLDER = os.getenv('UPLOAD_FOLDER', '/media')
+
 ADMIN_MAIL = os.getenv('ADMIN_MAIL')
 
 MONGODB_SETTINGS = {
