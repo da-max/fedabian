@@ -1,0 +1,9 @@
+#import "../fragment/projectFragment.gql"
+
+mutation ProjectUpdate ($id: ID!, $project: ProjectInput!) {
+  updateProject(id: $id, project: $project) {
+    project {
+      ...ProjectFragment
+    }
+  }
+}

@@ -1,0 +1,7 @@
+#import "../fragment/projectFragment.gql"
+
+query Project($id: ID!) {
+  project(id: $id) {
+    ...ProjectFragment
+  }
+}

@@ -1,0 +1,14 @@
+fragment ProjectFragment on Project {
+  id
+  title
+  description
+  demo
+  repo
+  image {
+    contentType
+    md5
+    chunkSize
+    length
+    data
+  }
+}
