@@ -13,7 +13,7 @@
           entreprises qui proposent des services que j’utilisais au quotidien.
         </p>
         <p class="mt-8">
-          <a class="btn btn-primary" target="_blank" :href="resumeLink" type="link">
+          <a class="btn btn-primary" target="_blank" :href="$config.resumeLink" type="link">
             Voir mon CV
           </a>
         </p>
@@ -29,7 +29,6 @@ import { Component, Vue } from 'nuxt-property-decorator'
 @Component
 export default class AboutContent extends Vue {
   name: string = 'Content'
-  resumeLink: string = process.env.RESUME_LINK || '/resume'
 }
 </script>
 
