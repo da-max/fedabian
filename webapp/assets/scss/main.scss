@@ -56,7 +56,8 @@ h2 {
   @apply text-xl;
 }
 
-input:not([type='file']), textarea {
+input:not([type="file"]),
+textarea {
   @apply border border-primary p-1 rounded transition-colors duration-300;
   &:focus {
     @apply border-inverse-primary outline-none;
@@ -103,9 +104,9 @@ a {
   }
 }
 
-.container * {
+.container > * {
   @apply w-full;
-  > p {
+  p {
     @apply text-center;
   }
 }
@@ -135,10 +136,12 @@ a {
   }
 }
 
-.page-enter-active, .page-leave-active {
+.page-enter-active,
+.page-leave-active {
   @apply transition-opacity duration-300;
 }
 
-.page-enter, .page-leave-active {
+.page-enter,
+.page-leave-active {
   @apply opacity-0;
 }
