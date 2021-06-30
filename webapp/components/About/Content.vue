@@ -12,11 +12,25 @@
           dangers pour la liberté et la vie privée que peuvent représenter les
           entreprises qui proposent des services que j’utilisais au quotidien.
         </p>
+        <p class="mt-8">
+          <a class="btn btn-primary" target="_blank" :href="$config.resumeLink" type="link">
+            Voir mon CV
+          </a>
+        </p>
       </div>
     </header>
     <AboutTechnologies />
   </section>
 </template>
+
+<script lang="ts">
+import { Component, Vue } from 'nuxt-property-decorator'
+
+@Component
+export default class AboutContent extends Vue {
+  name: string = 'Content'
+}
+</script>
 
 <style scoped lang="scss">
 h1 {
@@ -29,5 +43,9 @@ p {
 
 header {
   @apply mb-32;
+}
+
+a.btn {
+  @apply px-10 text-base;
 }
 </style>

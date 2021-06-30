@@ -13,6 +13,10 @@ export default {
     ]
   },
 
+  publicRuntimeConfig: {
+    resumeLink: process.env.RESUME_LINK || '/resume'
+  },
+
   router: {
     linkExactActiveClass: 'active-link'
   },
