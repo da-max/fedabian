@@ -9,7 +9,7 @@ export default {
       { hid: 'author', name: 'author', content: 'Maxime Ben Hassen' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.png' }
     ]
   },
 
